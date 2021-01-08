@@ -1,0 +1,79 @@
+.DashboardLeft{
+    color: white;
+    width: 37.5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 12.5%;
+}
+.DashboardLeft_greeting > p:first-of-type{
+    font-size: 2em;
+    font-weight: 200;
+    margin-bottom: 5px;
+}
+.DashboardLeft_greeting .name{
+    font-weight: 900;
+}
+.DashboardLeft_greeting > p:nth-of-type(2) {
+    font-size: .9em;
+}
+
+
+.DashboardLeft_input{
+    background: rgba(128, 128, 128, 0.226);
+    color: white;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px 20px;
+    margin: 20px 0 40px;
+}
+.DashboardLeft_input > input{
+    background: none;
+    outline: none;
+    border: none;
+    margin-left: 20px;
+    color: white;
+    font-size: .9em;
+    width: 100%;
+    font-family: "Adobe Clean", sans-serif;
+    margin-top: 5px;
+}
+.DashboardLeft_input > input::placeholder{
+    color: white;
+}
+
+
+.DashboardLeft_filterBtns .MuiSvgIcon-root{
+    padding: 20px;
+    border-radius: 15px;
+    font-size: 40px;
+}
+.DashboardLeft_filterBtns > p{
+    font-size: .9em;
+    margin-bottom: 50px;
+}
+.DashboardLeft_filterBtns > div{
+    display: flex;
+}
+.filterBtn{
+    cursor: pointer;
+    transition: .5s;
+    margin-right: 50px;
+}
+.filterBtn.active{
+    transform: scale(1.2);
+}
+.filterBtn > p{
+    text-align: center;
+    font-size: .7em;
+}
+#allUsers .MuiSvgIcon-root{
+    background: #fb34a9;
+}
+#maleUsers .MuiSvgIcon-root{
+    background: #2bbeb4;
+}
+#femaleUsers .MuiSvgIcon-root{
+    background: #7745c8;
+}

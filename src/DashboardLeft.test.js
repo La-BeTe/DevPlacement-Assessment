@@ -1,5 +1,6 @@
 import {render, screen, fireEvent} from "@testing-library/react";
 import DashboardLeft from "./DashboardLeft";
+import React from "react";
 
 test("renders a greeting", ()=>{
     render(<DashboardLeft />);
@@ -10,7 +11,7 @@ test("renders a greeting", ()=>{
 })
 
 test("adds active class to current users filter", ()=>{
-    render(<DashboardLeft />);
+    render(<DashboardLeft filterUsers={()=>{}} />);
     const maleUsersFilterButton = screen.getByTestId("male-users");
     const otherFilterButtons = screen.getAllByTestId("other-filters");
     fireEvent.click(maleUsersFilterButton);
@@ -18,4 +19,13 @@ test("adds active class to current users filter", ()=>{
     otherFilterButtons.forEach(btn=>{
         expect(btn).not.toHaveClass("active");
     })
+})
+
+test("calls parent component function with filter object", ()=>{
+    const filterUsers = jest.fn();
+    render(<DashboardLeft filterUsers={filterUsers} />);
+    const maleUsersFilterButton = screen.getByTestId("male-users");
+    fireEvent.click(maleUsersFilterButton);
+    expect(filterUsers).toHaveBeenCalledWith({gender: "male"});
+    expect(filterUsers).toHaveBeenCalledTimes(1);
 })
