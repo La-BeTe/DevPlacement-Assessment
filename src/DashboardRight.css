@@ -1,0 +1,84 @@
+.DashboardRight{
+    width: 50vw;
+    background: #f7f7ff;
+    padding: 20px 50px;
+    margin: 15px 15px 15px auto;
+    border-radius: 20px;
+}
+.DashboardRight_header > h2{
+    margin-bottom: 10px;
+}
+.DashboardRight_header > p{
+    font-size: .7em;
+    margin: 10px 0;
+}
+.DashboardRight_header > .inputs{
+    display: flex;
+    justify-content: space-between;
+}
+.inputs > div{
+    margin-right: 20px !important;
+    transition: all .5s;
+}
+.inputs > div:first-of-type{
+    border: none;
+    background: #e3e3ed;
+    color: grey;
+    padding: 7px 15px;
+    display: flex;
+    align-items: center;
+    border-radius: 35px;
+    width: 60%;
+}
+.inputs > div:first-of-type > input{
+    background: none;
+    outline: none;
+    border: none;
+    margin-left: 10px;
+    color: grey;
+    font-size: .8em;
+    width: 100%;
+    font-family: "Adobe Clean", sans-serif;
+    margin-top: 5px;
+}
+#hide{
+    width: 0;
+    opacity: 0;
+    margin-right: 0 !important;
+}
+.DashboardRight_header .MuiFormControl-root{
+    background: #e3e3ed;
+    border-radius: 20px;
+    width: 30%;
+    padding: 0 20px;
+}
+.DashboardRight_header .MuiFormControl-root > .MuiInput-root{
+    font-size: .8em !important;
+    color: grey;
+    text-align: center;
+    height: 100%;
+    font-family: "Adobe Clean", sans-serif;
+}
+.DashboardRight_header .MuiInput-root > .MuiInput-input{
+    margin-top: 5px;
+}
+.DashboardRight_header .MuiInput-underline:before,
+.DashboardRight_header .MuiInput-underline:after,
+.DashboardRight_header .MuiInput-underline:hover::before,
+.DashboardRight_header .MuiInput-underline:hover::after{
+    border: none !important;
+}
+.DashboardRight_header .MuiSelect-select:focus{
+    background: none;
+}
+.DashboardRight_header .MuiFormControlLabel-root{
+    transform: scale(.9);
+}
+.DashboardRight_header .Mui-checked + .MuiSwitch-track{
+    background: #2bbe9e !important;
+}
+.DashboardRight_header .MuiFormControlLabel-root > .MuiTypography-root{
+    font-size: .8em;
+    font-family: "Adobe Clean", sans-serif;
+    margin-top: 5px;
+}

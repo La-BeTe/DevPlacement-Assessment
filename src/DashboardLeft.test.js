@@ -1,6 +1,5 @@
 import {render, screen, fireEvent} from "@testing-library/react";
 import DashboardLeft from "./DashboardLeft";
-import React from "react";
 
 test("renders a greeting", ()=>{
     render(<DashboardLeft />);

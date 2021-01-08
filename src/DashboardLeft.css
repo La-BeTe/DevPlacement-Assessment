@@ -1,10 +1,11 @@
 .DashboardLeft{
     color: white;
-    width: 37.5%;
+    width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 12.5%;
+    margin-left: 5%;
+    margin-right: 100px;
 }
 .DashboardLeft_greeting > p:first-of-type{
     font-size: 2em;
@@ -15,7 +16,8 @@
     font-weight: 900;
 }
 .DashboardLeft_greeting > p:nth-of-type(2) {
-    font-size: .9em;
+    font-size: .7em;
+    font-weight: 200;
 }
 
 
@@ -26,7 +28,8 @@
     align-items: center;
     border-radius: 15px;
     padding: 15px 20px;
-    margin: 20px 0 40px;
+    margin: 20px 0 30px;
+    width: 100%;
 }
 .DashboardLeft_input > input{
     background: none;
@@ -51,18 +54,20 @@
 }
 .DashboardLeft_filterBtns > p{
     font-size: .9em;
-    margin-bottom: 50px;
+    margin-bottom: 15px;
 }
 .DashboardLeft_filterBtns > div{
     display: flex;
+    width: 100%;
 }
 .filterBtn{
     cursor: pointer;
     transition: .5s;
     margin-right: 50px;
+    transform: scale(.8);
 }
 .filterBtn.active{
-    transform: scale(1.2);
+    transform: scale(1);
 }
 .filterBtn > p{
     text-align: center;
