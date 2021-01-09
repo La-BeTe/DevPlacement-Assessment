@@ -1,0 +1,157 @@
+.Users{
+    flex: 1;
+    margin-top: 20px;
+    margin-bottom: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.Users > .MuiPaper-root{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.Users .img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid var(--male-users);
+}
+.Users .img > img{
+    width: 100%;
+}
+
+.Users .details{
+    margin-left: 20px;
+    flex: 1;
+    font-size: .8em;
+}
+.Users .details p{
+    margin: 5px;
+}
+.Users .details > div{
+    display: flex;
+    font-weight: 300;
+    color: rgb(163, 162, 162);
+    flex-wrap: wrap;
+}
+.Users .details > div > p{
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+.Users .details > div > p > .MuiSvgIcon-root{
+    margin-right: 5px;
+    font-size: 1.3em;
+    margin-bottom: 2px;
+}
+.Users .name{
+    font-weight: bold;
+    font-size: 1.2em;
+}
+.Users .address{
+    font-style: italic;
+}
+
+.Users > .MuiPaper-root > div > .MuiSvgIcon-root{
+    padding: 7px;
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    margin-top: 100%;
+    background: var(--male-users);
+    color: white;
+    box-shadow: 0px 3px 5px -1px rgba(43, 190, 180, 0.404), 0px 5px 8px 0px rgba(43, 190, 180, 0.274), 0px 1px 14px 0px rgba(43, 190, 180, 0.247);
+}
+.Users > .MuiPaper-root > div > .MuiSvgIcon-root:hover{
+    color: var(--right-dashboard-inputs-text);
+    background: var(--right-dashboard-inputs-background);
+    box-shadow: inset 0px 3px 5px -1px rgba(0,0,0,0.2), inset 0px 5px 8px 0px rgba(0,0,0,0.14), inset 0px 1px 14px 0px rgba(0,0,0,0.12);
+    cursor: pointer;
+}
+
+
+
+
+/* Single user styling */
+.User > .header{
+    display: flex;
+    align-items: center;
+    color: grey;
+    text-transform: uppercase;
+    font-size: .8em;
+    margin: 5px 0 15px;
+    padding: 5px;
+    border-radius: 10px;
+    width: fit-content;
+}
+.User > .header .MuiSvgIcon-root{
+    color: var(--male-users);
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+.User > .header:hover{
+    cursor: pointer;
+    background: var(--right-dashboard-inputs-background);
+    color: var(--right-dashboard-inputs-text) !important;
+}
+
+.User > div{
+    display: flex;
+    margin-left: 10px;
+}
+.User > div > .img{
+    width: 120px;
+    height: 120px;
+}
+.User .details > p{
+    margin: 10px 0;
+    font-size: .9em;
+}
+.name-age{
+    font-weight: bolder !important;
+    font-size: 1.3em !important;
+}
+.name-age > .age{
+    font-weight: 300;
+}
+.User .badge{
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 10px;
+    width: fit-content;
+}
+.User .address{
+    font-size: 1em !important;
+    font-style: normal;
+}
+.User .email{
+    background:var(--right-dashboard-inputs-background);
+    color: grey;
+    font-size: 1em;
+    letter-spacing: 1px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.User .email > .MuiSvgIcon-root{
+    font-size: 18px;
+    margin-right: 6px;
+    margin-bottom: 5px;
+}
+.User .joined{
+    background: pink;
+    font-weight: normal !important;
+}
+.User .phone,
+.User .mobile{
+    color: grey;
+    display: flex;
+    align-items: center;
+}
+.User .phone > .MuiSvgIcon-root,
+.User .mobile > .MuiSvgIcon-root{
+    margin-right: 5px;
+    font-size: 18px;
+}

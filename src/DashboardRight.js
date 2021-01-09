@@ -7,10 +7,45 @@ import {Select, MenuItem, FormControlLabel, Switch, FormControl} from "@material
 import {useState} from "react";
 import "./DashboardRight.css";
 
+const users = [
+    {
+        name: "Shalom Chioma",
+        address: "9278 new road, kilcoole, waterford",
+        email: "shalom.chioma@example.com",
+        phone: "011-962-7516",
+        mobile: "011-978-7501",
+        age: 26,
+        registered: "2020-15-12",
+        photo: "/testImg.png"
+    },
+    {
+        name: "Brad Gibson",
+        address: "9278 old road, waterford",
+        email: "brad.gibson@example.com",
+        phone: "011-862-8236",
+        mobile: "011-862-8236",
+        age: 26,
+        registered: "2020-15-12",
+        photo: "/testImg.png"
+    },
+    {
+        name: "Emeka Onuchukwu",
+        address: "01, Allen Avenue",
+        email: "emeka.onu@example.com",
+        phone: "011-978-7501",
+        mobile: "011-978-7501",
+        age: 26,
+        registered: "2020-15-12",
+        photo: "/testImg.png"
+    },
+];
+
 function DashboardRight(){
     const [country, setCountry] = useState("");
     const [input, setInput] = useState("");
     const [countrySelectVisible, setCountrySelectVisible] = useState(true);
+    const [singleUser, setSingleUser] = useState({});
+
     function handleInputChange(e){
         setInput(e.target.value);
     }
@@ -57,11 +92,15 @@ function DashboardRight(){
                 </div>
             </div>
 
-            <Users />
+            <Users
+                users={singleUser.name ? [singleUser] : users}
+                showSingleUser={(user)=> setSingleUser(user)}
+                hideSingleUser={()=> setSingleUser({})}
+            />
 
-            <div className="DashboardRight_footer">
+            <div className={singleUser.name ? "DashboardRight_footer showing-single-user" : "DashboardRight_footer"}>
                 <div>
-                    <a href="#" data-testid="download-results">
+                    <a href="/" data-testid="download-results">
                         <CloudDownloadIcon />
                         <span className="text">Download results</span>
                     </a>

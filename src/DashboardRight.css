@@ -1,10 +1,12 @@
 .DashboardRight{
     width: 45vw;
     background: var(--right-dashboard-background);
-    padding: 20px 50px;
+    padding: 20px 50px 10px;
     margin: 15px 15px 15px auto;
     border-radius: 20px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 .DashboardRight_header > h2{
     margin-bottom: 10px;
@@ -55,7 +57,6 @@
 .DashboardRight_header .MuiFormControl-root > .MuiInput-root{
     font-size: .8em !important;
     color: black;
-    text-align: center;
     height: 100%;
     font-family: "Adobe Clean", sans-serif;
 }
@@ -105,6 +106,11 @@
     background: var(--right-dashboard-inputs-background);
     color: var(--right-dashboard-inputs-text);
 }
+.DashboardRight_footer.showing-single-user > div:first-of-type > a,
+.DashboardRight_footer.showing-single-user > div:first-of-type > a:hover{
+    background: #ba98f0;
+    color: white;
+}
 .DashboardRight_footer > div:first-of-type > a .text{
     display: block;
     margin-top: 5px;
@@ -118,6 +124,19 @@
     border-radius: 10px;
     margin-left: 10px;
     cursor: pointer;
+}
+.DashboardRight_footer.showing-single-user{
+    pointer-events: none;
+}
+.DashboardRight_footer.showing-single-user > div:nth-of-type(2) > .MuiSvgIcon-root.disabled,
+.DashboardRight_footer.showing-single-user > div:nth-of-type(2) > .MuiSvgIcon-root.disabled:hover{
+    color: rgb(153, 153, 153);
+    background: var(--right-dashboard-inputs-background);
+}
+.DashboardRight_footer.showing-single-user > div:nth-of-type(2) > .MuiSvgIcon-root,
+.DashboardRight_footer.showing-single-user > div:nth-of-type(2) > .MuiSvgIcon-root:hover{
+    background: #838897;
+    color: white;
 }
 .DashboardRight_footer > div:nth-of-type(2) > .MuiSvgIcon-root.disabled,
 .DashboardRight_footer > div:nth-of-type(2) > .MuiSvgIcon-root:hover{
