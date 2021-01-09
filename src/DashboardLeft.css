@@ -39,7 +39,6 @@
     color: white;
     font-size: .9em;
     width: 100%;
-    font-family: "Adobe Clean", sans-serif;
     margin-top: 5px;
 }
 .DashboardLeft_input > input::placeholder{
@@ -71,14 +70,14 @@
 }
 .filterBtn > p{
     text-align: center;
-    font-size: .7em;
+    font-size: .8em;
 }
 #allUsers .MuiSvgIcon-root{
-    background: #fb34a9;
+    background: var(--all-users);
 }
 #maleUsers .MuiSvgIcon-root{
-    background: #2bbeb4;
+    background: var(--male-users);
 }
 #femaleUsers .MuiSvgIcon-root{
-    background: #7745c8;
+    background: var(--female-users);
 }

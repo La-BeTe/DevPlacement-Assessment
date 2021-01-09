@@ -1,7 +1,27 @@
+:root{
+  --right-dashboard-background: #f7f7ff;
+  --right-dashboard-inputs-background: #e3e3ed;
+  --right-dashboard-inputs-text: black;
+  --app-background: #252a40;
+  --all-users: #fb34a9;
+  --male-users: #2bbeb4;
+  --female-users: #7745c8;
+}
+
 .App {
-  background: #252a40;
+  background: var(--app-background);
   width: 100vw;
   height: 100vh;
   display: flex;
-  font-family: "Adobe Clean", sans-serif;
+}
+
+*{
+  font-family: "Adobe Clean", sans-serif !important;
+  transition: all .3s;
+}
+a, li, input{
+  font-family: "Adobe Clean", sans-serif !important;
+}
+li{
+  font-size: .9em !important;
 }
