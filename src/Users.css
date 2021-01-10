@@ -4,6 +4,26 @@
     margin-bottom: auto;
     overflow-y: auto;
     overflow-x: hidden;
+    position: relative;
+    transition: all .5s;
+    transform: translateY(-100px);
+}
+.Users.animate{
+    animation: animate 1.5s forwards;
+}
+@keyframes animate{
+    0%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
+    50%{
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0px);
+        opacity: 1;
+    }
 }
 .Users > .MuiPaper-root{
     display: flex;
@@ -20,6 +40,7 @@
 }
 .Users .img > img{
     width: 100%;
+    border-radius: 50%;
 }
 
 .Users .details{
@@ -154,4 +175,31 @@
 .User .mobile > .MuiSvgIcon-root{
     margin-right: 5px;
     font-size: 18px;
+}
+
+
+/* React CSS Transitions */
+.users-transitions-enter{
+    transform: translateY(-100px);
+    opacity: 1;
+}
+.users-transitions-enter-active{
+    opacity: 0;
+    transition: translate .5s;
+}
+.users-transitions-enter-done{
+    transform: translateY(0px);
+    opacity: 1;
+    transition: opacity .5s, translate .5s;
+}
+.users-transitions-exit {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+.users-transitions-exit-active{
+    transform: translateY(0px);
+}
+.users-transitions-exit-done {
+    transform: translateY(0px);
+    opacity: 1;
 }
