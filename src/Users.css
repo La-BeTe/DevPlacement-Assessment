@@ -5,30 +5,11 @@
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
-    transition: all .5s;
-    transform: translateY(-100px);
-}
-.Users.animate{
-    animation: animate 1.5s forwards;
-}
-@keyframes animate{
-    0%{
-        transform: translateY(0px);
-        opacity: 1;
-    }
-    50%{
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0px);
-        opacity: 1;
-    }
 }
 .Users > .MuiPaper-root{
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 15px 20px;
     margin: 10px;
     border-radius: 10px;
 }
@@ -96,110 +77,5 @@
 
 
 /* Single user styling */
-.User > .header{
-    display: flex;
-    align-items: center;
-    color: grey;
-    text-transform: uppercase;
-    font-size: .8em;
-    margin: 5px 0 15px;
-    padding: 5px;
-    border-radius: 10px;
-    width: fit-content;
-}
-.User > .header .MuiSvgIcon-root{
-    color: var(--male-users);
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-.User > .header:hover{
-    cursor: pointer;
-    background: var(--right-dashboard-inputs-background);
-    color: var(--right-dashboard-inputs-text) !important;
-}
+/* Moved to User component */
 
-.User > div{
-    display: flex;
-    margin-left: 10px;
-}
-.User > div > .img{
-    width: 120px;
-    height: 120px;
-}
-.User .details > p{
-    margin: 10px 0;
-    font-size: .9em;
-}
-.name-age{
-    font-weight: bolder !important;
-    font-size: 1.3em !important;
-}
-.name-age > .age{
-    font-weight: 300;
-}
-.User .badge{
-    display: flex;
-    align-items: center;
-    border-radius: 30px;
-    padding: 10px;
-    width: fit-content;
-}
-.User .address{
-    font-size: 1em !important;
-    font-style: normal;
-}
-.User .email{
-    background:var(--right-dashboard-inputs-background);
-    color: grey;
-    font-size: 1em;
-    letter-spacing: 1px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-.User .email > .MuiSvgIcon-root{
-    font-size: 18px;
-    margin-right: 6px;
-    margin-bottom: 5px;
-}
-.User .joined{
-    background: pink;
-    font-weight: normal !important;
-}
-.User .phone,
-.User .mobile{
-    color: grey;
-    display: flex;
-    align-items: center;
-}
-.User .phone > .MuiSvgIcon-root,
-.User .mobile > .MuiSvgIcon-root{
-    margin-right: 5px;
-    font-size: 18px;
-}
-
-
-/* React CSS Transitions */
-.users-transitions-enter{
-    transform: translateY(-100px);
-    opacity: 1;
-}
-.users-transitions-enter-active{
-    opacity: 0;
-    transition: translate .5s;
-}
-.users-transitions-enter-done{
-    transform: translateY(0px);
-    opacity: 1;
-    transition: opacity .5s, translate .5s;
-}
-.users-transitions-exit {
-    transform: translateY(-100px);
-    opacity: 0;
-}
-.users-transitions-exit-active{
-    transform: translateY(0px);
-}
-.users-transitions-exit-done {
-    transform: translateY(0px);
-    opacity: 1;
-}

@@ -5,6 +5,7 @@ import "./DashboardLeft.css";
 
 function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
     const [currentFilter, setCurrentFilter] = useState("allUsers");
+    const [input, setInput] = useState("");
 
     useEffect(() => {
         document.querySelector(".filterBtn.active").classList.remove("active");
@@ -14,6 +15,10 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
     function handleClick(id) {
         setCurrentFilter(id);
         setUseFetchFilter("gender", id.replace(/users/i, ""));
+    }
+
+    function handleInputChange(e) {
+        setInput(e.target.value);
     }
 
     return (
@@ -28,7 +33,12 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
             </div>
             <div className="DashboardLeft_input">
                 <SearchRoundedIcon />
-                <input type="text" placeholder="Find a user" />
+                <input
+                    type="text"
+                    placeholder="Find a user"
+                    value={input}
+                    onChange={handleInputChange}
+                />
             </div>
             <div className="DashboardLeft_filterBtns">
                 <p>Show Users</p>

@@ -3,6 +3,7 @@ import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import Users from "./Users";
+import User from "./User";
 import {
     Select,
     MenuItem,
@@ -158,17 +159,19 @@ function DashboardRight({
                 </div>
             </div>
 
-            <Users
-                users={
-                    singleUser.name
-                        ? singleUser
-                        : users.filter((user) =>
-                              new RegExp(input, "i").test(user.name)
-                          )
-                }
-                showSingleUser={(user) => setSingleUser(user)}
-                hideSingleUser={() => setSingleUser({})}
-            />
+            {singleUser.name ? (
+                <User
+                    user={singleUser}
+                    hideSingleUser={() => setSingleUser({})}
+                />
+            ) : (
+                <Users
+                    users={users.filter((user) =>
+                        new RegExp(input, "i").test(user.name)
+                    )}
+                    showSingleUser={(user) => setSingleUser(user)}
+                />
+            )}
 
             <div
                 className={
