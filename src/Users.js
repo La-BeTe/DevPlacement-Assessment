@@ -1,13 +1,19 @@
 import { Paper } from "@material-ui/core";
+import { useState } from "react";
 import ArrowRightIcon from "@material-ui/icons/ArrowForwardRounded";
 import EmailIcon from "@material-ui/icons/EmailOutlined";
 import PhoneIcon from "@material-ui/icons/PhoneInTalkOutlined";
 import "./Users.css";
 
 function Users({ users, showSingleUser }) {
+    const [exit, setExit] = useState(false);
+    function showUser(user) {
+        setExit(true);
+        setTimeout(() => showSingleUser(user), 300);
+    }
     return (
-        <div className="Users">
-            {users.map((user, i) => {
+        <div className={exit ? "Users exit" : "Users enter"}>
+            {users.map((user) => {
                 return (
                     <Paper key={user.id} elevation={5} data-testid="user">
                         <div className="img">
@@ -29,7 +35,7 @@ function Users({ users, showSingleUser }) {
                         </div>
                         <div
                             data-testid="see-more"
-                            onClick={() => showSingleUser(user)}
+                            onClick={() => showUser(user)}
                         >
                             <ArrowRightIcon />
                         </div>

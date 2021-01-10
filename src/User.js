@@ -2,16 +2,18 @@ import ArrowLeftIcon from "@material-ui/icons/ArrowBackRounded";
 import PhoneAndroidIcon from "@material-ui/icons/PhoneAndroid";
 import EmailIcon from "@material-ui/icons/EmailOutlined";
 import PhoneIcon from "@material-ui/icons/PhoneInTalkOutlined";
+import { useState } from "react";
 import "./User.css";
 
 function User({ user, hideSingleUser }) {
+    const [exit, setExit] = useState(false);
+    function hideUser() {
+        setExit(true);
+        setTimeout(hideSingleUser, 300);
+    }
     return (
-        <div className="User" data-testid="user">
-            <div
-                className="header"
-                onClick={hideSingleUser}
-                data-testid="go-back"
-            >
+        <div className={exit ? "User exit" : "User enter"} data-testid="user">
+            <div className="header" onClick={hideUser} data-testid="go-back">
                 <ArrowLeftIcon />
                 RESULTS
             </div>

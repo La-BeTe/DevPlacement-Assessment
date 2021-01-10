@@ -6,6 +6,33 @@
     overflow-x: hidden;
     position: relative;
 }
+.Users.enter{
+    animation: enter .3s forwards;
+}
+.Users.exit{
+    animation: exit .3s forwards;
+}
+@keyframes enter{
+    0%{
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes exit{
+    0%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        height: 0;
+        transform: translateY(-100px)
+    }
+}
 .Users > .MuiPaper-root{
     display: flex;
     align-items: center;
@@ -74,8 +101,26 @@
 }
 
 
-
-
 /* Single user styling */
 /* Moved to User component */
 
+
+/* Transition styling */
+.users-transition-enter{
+    transform: translateY(-100px);
+    opacity: 0;
+}
+.users-transition-enter-done{
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all .3s;
+}
+.users-transition-exit-done{
+    transform: translateY(-100px);
+    opacity: 1;
+    transition: all .3s;
+}
+.users-transition-exit{
+    transform: translateY(0px);
+    opacity: 0;
+}

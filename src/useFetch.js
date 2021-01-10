@@ -82,14 +82,10 @@ function useFetch() {
     }
     useEffect(() => {
         getUsers();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function setFilter(field, value) {
-        // Add an ampersand behind currentUrl so queries at the end of url can be matched
-        // const currentUrlCopy = (currentUrl + "&")
-        //     .replace(new RegExp(`${field}=.+?&`, "ig"), "")
-        //     .slice(0, -1); //Slice the ampersand off added at the befinning
-        // console.log(currentUrlCopy);
         switch (field) {
             case "page":
             case "nat":

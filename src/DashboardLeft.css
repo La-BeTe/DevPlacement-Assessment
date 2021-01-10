@@ -46,8 +46,9 @@
 }
 
 
-.DashboardLeft_filterBtns .MuiSvgIcon-root{
+.DashboardLeft_filterBtns svg{
     padding: 20px;
+    width: 1em !important;
     border-radius: 15px;
     font-size: 40px;
 }
@@ -72,12 +73,24 @@
     text-align: center;
     font-size: .8em;
 }
-#allUsers .MuiSvgIcon-root{
+#allUsers svg{
     background: var(--all-users);
 }
-#maleUsers .MuiSvgIcon-root{
+#maleUsers svg{
     background: var(--male-users);
 }
-#femaleUsers .MuiSvgIcon-root{
+#femaleUsers svg{
     background: var(--female-users);
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 993px){
+    .DashboardLeft{
+        width: 80vw;
+    }
+    .DashboardLeft_filterBtns svg{
+        width: .6em;
+        height: .6em;
+    }
 }

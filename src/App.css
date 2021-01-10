@@ -14,6 +14,14 @@
   height: 100vh;
   display: flex;
 }
+@media screen and (max-width: 993px){
+  .App{
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+}
 
 *{
   font-family: "Adobe Clean", sans-serif !important;

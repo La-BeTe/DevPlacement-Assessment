@@ -1,5 +1,10 @@
-import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
-import GroupSharpIcon from "@material-ui/icons/GroupSharp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faMale,
+    faFemale,
+    faUsers,
+    faSearch,
+} from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import "./DashboardLeft.css";
 
@@ -32,7 +37,7 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
                 </p>
             </div>
             <div className="DashboardLeft_input">
-                <SearchRoundedIcon />
+                <FontAwesomeIcon icon={faSearch} />
                 <input
                     type="text"
                     placeholder="Find a user"
@@ -51,7 +56,7 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
                         }
                         id="allUsers"
                     >
-                        <GroupSharpIcon />
+                        <FontAwesomeIcon icon={faUsers} />
                         <p>All Users</p>
                     </div>
                     <div
@@ -62,7 +67,7 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
                         }
                         id="maleUsers"
                     >
-                        <GroupSharpIcon />
+                        <FontAwesomeIcon icon={faMale} />
                         <p>Male Users</p>
                     </div>
                     <div
@@ -75,7 +80,7 @@ function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
                         }
                         id="femaleUsers"
                     >
-                        <GroupSharpIcon />
+                        <FontAwesomeIcon icon={faFemale} />
                         <p>Female Users</p>
                     </div>
                 </div>

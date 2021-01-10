@@ -1,9 +1,8 @@
-import SearchRoundedIcon from "@material-ui/icons/SearchRounded";
 import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import Users from "./Users";
-import User from "./User";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import {
     Select,
     MenuItem,
@@ -11,41 +10,10 @@ import {
     Switch,
     FormControl,
 } from "@material-ui/core";
+import Users from "./Users";
+import User from "./User";
 import { useState, useEffect } from "react";
 import "./DashboardRight.css";
-
-// const users = [
-//     {
-//         name: "Shalom Chioma",
-//         address: "9278 new road, kilcoole, waterford",
-//         email: "shalom.chioma@example.com",
-//         phone: "011-962-7516",
-//         mobile: "011-978-7501",
-//         age: 26,
-//         registered: "2020-15-12",
-//         photo: "/testImg.png"
-//     },
-//     {
-//         name: "Brad Gibson",
-//         address: "9278 old road, waterford",
-//         email: "brad.gibson@example.com",
-//         phone: "011-862-8236",
-//         mobile: "011-862-8236",
-//         age: 26,
-//         registered: "2020-15-12",
-//         photo: "/testImg.png"
-//     },
-//     {
-//         name: "Emeka Onuchukwu",
-//         address: "01, Allen Avenue",
-//         email: "emeka.onu@example.com",
-//         phone: "011-978-7501",
-//         mobile: "011-978-7501",
-//         age: 26,
-//         registered: "2020-15-12",
-//         photo: "/testImg.png"
-//     },
-// ];
 
 function DashboardRight({
     fetchHookData: {
@@ -107,12 +75,12 @@ function DashboardRight({
                 <p>Filter by</p>
                 <div className="inputs">
                     <div>
-                        <SearchRoundedIcon />
+                        <FontAwesomeIcon icon={faSearch} />
                         <input
                             type="text"
                             value={input}
                             onChange={handleInputChange}
-                            placeholder="Find a user"
+                            placeholder="Find in list"
                         />
                     </div>
                     <FormControl id={countrySelectVisible ? "" : "hide"}>
@@ -163,6 +131,7 @@ function DashboardRight({
                 <User
                     user={singleUser}
                     hideSingleUser={() => setSingleUser({})}
+                    enter={!!singleUser.name}
                 />
             ) : (
                 <Users
@@ -170,6 +139,7 @@ function DashboardRight({
                         new RegExp(input, "i").test(user.name)
                     )}
                     showSingleUser={(user) => setSingleUser(user)}
+                    enter={!singleUser.name}
                 />
             )}
 

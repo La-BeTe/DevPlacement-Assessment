@@ -2,6 +2,32 @@
     flex: 1;
     overflow-y: auto;
 }
+.User.enter{
+    animation: enter .3s forwards;
+}
+.User.exit{
+    animation: exit .3s forwards;
+}
+@keyframes enter{
+    0%{
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+@keyframes exit{
+    0%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+}
 .User > .header{
     display: flex;
     align-items: center;
@@ -95,4 +121,24 @@
 .User .mobile > .MuiSvgIcon-root{
     margin-right: 5px;
     font-size: 18px;
+}
+
+/* Transition styling */
+.user-transition-enter{
+    transform: translateY(-100px);
+    opacity: 0;
+}
+.user-transition-enter-done{
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all .3s;
+}
+.user-transition-exit-done{
+    transform: translateY(-100px);
+    opacity: 0;
+    transition: all .3s;
+}
+.user-transition-exit{
+    transform: translateY(0px);
+    opacity: 1;
 }
