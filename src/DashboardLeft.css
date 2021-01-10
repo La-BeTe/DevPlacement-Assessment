@@ -88,9 +88,19 @@
 @media screen and (max-width: 993px){
     .DashboardLeft{
         width: 80vw;
+        margin-right: 0;
+        margin-left: 0;
+    }
+    .DashboardLeft_input{
+        padding: 10px 15px;
+        width: auto;
+        margin: 10px 0;
+    }
+    .DashboardLeft_filterBtns > div{
+        margin-right: 20px;
     }
     .DashboardLeft_filterBtns svg{
-        width: .6em;
+        width: .6em !important;
         height: .6em;
     }
 }

@@ -28,6 +28,7 @@
 }
 .info > .close-info:hover{
     transform: scale(1.5);
+    font-weight: bold;
 }
 .info.loading{
     top: 30px;
@@ -121,7 +122,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 10px;
 }
 .DashboardRight_footer > div:first-of-type > a{
     border-radius: 40px;
@@ -173,4 +174,49 @@
 .DashboardRight_footer > div:nth-of-type(2) > .MuiSvgIcon-root:hover{
     background: var(--right-dashboard-inputs-background);
     color: var(--right-dashboard-inputs-text);
+}
+
+
+/* Media Queries */
+@media screen and (max-width: 993px){
+    .DashboardRight{
+        width: 100vh;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 767px){
+    .DashboardRight{
+        width: 80%;
+        padding: 20px;
+    }
+    .info{
+        font-size: .6em;
+        top: 35px;
+        right: 10px;
+    }
+    .DashboardRight_header .inputs{
+        flex-direction: column;
+    }
+    .DashboardRight_header .inputs > div{
+        margin: 10px;
+    }
+    .inputs > div:first-of-type{
+        width: 80%;
+    }
+    #centerOnMobile{
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .DashboardRight_header .inputs .MuiFormControlLabel-root{
+        position: absolute;
+        top: 165px;
+        right: 10px;
+    }
+    .DashboardRight_footer{
+        padding: 5px;
+        flex-wrap: wrap;
+    }
+    .DashboardRight_footer > div{
+        margin-bottom: 10px;
+    }
 }

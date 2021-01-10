@@ -118,6 +118,7 @@ function DashboardRight({
                                 color="default"
                             />
                         }
+                        id={countrySelectVisible ? "" : "centerOnMobile"}
                         label={
                             countrySelectVisible
                                 ? "Hide Country"
