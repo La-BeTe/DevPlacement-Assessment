@@ -9,22 +9,29 @@ test("renders a greeting", () => {
     expect(welcomeElement).toBeInTheDocument();
 });
 
-test("adds active class to current users filter", () => {
-    render(<DashboardLeft filterUsers={() => {}} />);
+test("adds active class to current users filter with the passed in gender", () => {
+    render(<DashboardLeft gender="male" />);
     const maleUsersFilterButton = screen.getByTestId("male-users");
-    const otherFilterButtons = screen.getAllByTestId("other-filters");
-    fireEvent.click(maleUsersFilterButton);
     expect(maleUsersFilterButton).toHaveClass("active");
+    const otherFilterButtons = screen.getAllByTestId("other-filters");
     otherFilterButtons.forEach((btn) => {
         expect(btn).not.toHaveClass("active");
     });
 });
 
-test("calls parent component function with filter object", () => {
-    const filterUsers = jest.fn();
-    render(<DashboardLeft setFilter={filterUsers} />);
+test("calls filter function with gender", () => {
+    const setFilter = jest.fn();
+    render(<DashboardLeft setFilter={setFilter} />);
     const maleUsersFilterButton = screen.getByTestId("male-users");
+    const otherFilterButtons = screen.getAllByTestId("other-filters");
     fireEvent.click(maleUsersFilterButton);
-    expect(filterUsers).toHaveBeenCalledWith("gender", "male");
-    expect(filterUsers).toHaveBeenCalledTimes(1);
+    expect(setFilter).toHaveBeenCalledWith("gender", "male");
+    for (const btn of otherFilterButtons) {
+        fireEvent.click(btn);
+        expect(setFilter).toHaveBeenCalledWith(
+            "gender",
+            btn.id.replace(/users/i, "")
+        );
+    }
+    expect(setFilter).toHaveBeenCalledTimes(3);
 });

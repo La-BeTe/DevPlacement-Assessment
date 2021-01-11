@@ -5,20 +5,20 @@ import {
     faUsers,
     faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./DashboardLeft.css";
 
 function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
-    const [currentFilter, setCurrentFilter] = useState("allUsers");
+    // const [currentFilter, setCurrentFilter] = useState("allUsers");
     const [input, setInput] = useState("");
 
-    useEffect(() => {
-        document.querySelector(".filterBtn.active").classList.remove("active");
-        document.getElementById(currentFilter).classList.add("active");
-    }, [currentFilter]);
+    // useEffect(() => {
+    //     document.querySelector(".filterBtn.active").classList.remove("active");
+    //     document.getElementById(currentFilter).classList.add("active");
+    // }, [currentFilter]);
 
     function handleClick(id) {
-        setCurrentFilter(id);
+        // setCurrentFilter(id);
         setUseFetchFilter("gender", id.replace(/users/i, ""));
     }
 

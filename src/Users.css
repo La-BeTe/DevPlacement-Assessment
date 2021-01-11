@@ -7,7 +7,7 @@
     position: relative;
 }
 .Users.enter{
-    animation: users-enter .3s forwards;
+    animation: users-enter .2s forwards;
 }
 .Users.exit{
     animation: users-exit .3s forwards;

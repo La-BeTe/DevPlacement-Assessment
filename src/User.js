@@ -9,7 +9,7 @@ function User({ user, hideSingleUser }) {
     const [exit, setExit] = useState(false);
     function hideUser() {
         setExit(true);
-        setTimeout(hideSingleUser, 300);
+        setTimeout(hideSingleUser, 200);
     }
     return (
         <div className={exit ? "User exit" : "User enter"} data-testid="user">
@@ -23,7 +23,8 @@ function User({ user, hideSingleUser }) {
                 </div>
                 <div className="details">
                     <p className="name-age">
-                        {user.name} <span className="age">{user.age}</span>
+                        {user.title ? user.title + " " + user.name : user.name}{" "}
+                        <span className="age">{user.age}</span>
                     </p>
                     <p className="address">{user.address}</p>
                     <p className="email badge">

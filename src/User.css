@@ -3,7 +3,7 @@
     overflow-y: auto;
 }
 .User.enter{
-    animation: enter .3s forwards;
+    animation: enter .2s forwards;
 }
 .User.exit{
     animation: exit .3s forwards;
@@ -128,5 +128,9 @@
     .User > div:nth-of-type(2){
         flex-direction: column;
         align-items: center;
+        margin-left: 0;
+    }
+    .User .details{
+        margin-left: 0;
     }
 }
