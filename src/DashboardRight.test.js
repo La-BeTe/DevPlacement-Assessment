@@ -30,16 +30,26 @@ const downloadLink = "/testlink";
 
 test("renders a heading", () => {
     const { rerender } = render(
-        <DashboardRight fetchHookData={{ gender, users }} />
+        <DashboardRight
+            fetchHookData={{ params: { gender }, data: { users } }}
+        />
     );
     expect(screen.getByText(/all users/i)).toBeInTheDocument();
     const newGender = "male";
-    rerender(<DashboardRight fetchHookData={{ gender: newGender, users }} />);
+    rerender(
+        <DashboardRight
+            fetchHookData={{ params: { gender: newGender }, data: { users } }}
+        />
+    );
     expect(screen.getByText(/male users/i)).toBeInTheDocument();
 });
 
 test("filters users in list based on value of input field", () => {
-    render(<DashboardRight fetchHookData={{ users, gender }} />);
+    render(
+        <DashboardRight
+            fetchHookData={{ params: { gender }, data: { users } }}
+        />
+    );
     expect(screen.getAllByTestId("user")).toHaveLength(3);
     const inputField = screen.getByTestId("input-field");
     userEvent.type(inputField, "brad");
@@ -48,7 +58,11 @@ test("filters users in list based on value of input field", () => {
 
 test("calls filter function with specified country", () => {
     const setFilter = jest.fn();
-    render(<DashboardRight fetchHookData={{ setFilter, gender, users }} />);
+    render(
+        <DashboardRight
+            fetchHookData={{ setFilter, params: { gender }, data: { users } }}
+        />
+    );
     const countrySelectField = screen.getByRole("button");
     fireEvent.mouseDown(countrySelectField);
     const listBox = within(screen.getByRole("listbox"));
@@ -57,7 +71,14 @@ test("calls filter function with specified country", () => {
 });
 
 test("renders a footer containing pagination and anchor tag", () => {
-    render(<DashboardRight fetchHookData={{ gender, users, downloadLink }} />);
+    render(
+        <DashboardRight
+            fetchHookData={{
+                params: { gender },
+                data: { users, downloadLink },
+            }}
+        />
+    );
     const linkElement = screen.getByTestId("download-results");
     const pagination = screen.getByTestId("pagination");
     expect(linkElement).toHaveAttribute("href");

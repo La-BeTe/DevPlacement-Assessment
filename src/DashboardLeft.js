@@ -9,16 +9,9 @@ import { useState } from "react";
 import "./DashboardLeft.css";
 
 function DashboardLeft({ setFilter: setUseFetchFilter, gender }) {
-    // const [currentFilter, setCurrentFilter] = useState("allUsers");
     const [input, setInput] = useState("");
 
-    // useEffect(() => {
-    //     document.querySelector(".filterBtn.active").classList.remove("active");
-    //     document.getElementById(currentFilter).classList.add("active");
-    // }, [currentFilter]);
-
     function handleClick(id) {
-        // setCurrentFilter(id);
         setUseFetchFilter("gender", id.replace(/users/i, ""));
     }
 

@@ -18,12 +18,10 @@ import "./DashboardRight.css";
 function DashboardRight({
     fetchHookData: {
         setFilter,
-        page,
-        users,
-        downloadLink,
+        params: { page, gender, nat },
+        data: { users, downloadLink },
         loading,
         error,
-        gender,
     },
 }) {
     const [country, setCountry] = useState("");
@@ -40,6 +38,11 @@ function DashboardRight({
             : setInfo(false);
     }, [loading, error]);
 
+    useEffect(() => {
+        // Show all users if a new filter is selected
+        setSingleUser({});
+    }, [gender, nat, input]);
+
     function handleInputChange(e) {
         setInput(e.target.value);
     }
@@ -47,7 +50,7 @@ function DashboardRight({
         setCountry(e.target.value);
         if (e.target.value) setFilter("nat", e.target.value);
     }
-    function handleToggleChange(e) {
+    function handleToggleChange() {
         setCountry("");
         setCountrySelectVisible(!countrySelectVisible);
     }
@@ -133,7 +136,6 @@ function DashboardRight({
                 <User
                     user={singleUser}
                     hideSingleUser={() => setSingleUser({})}
-                    enter={!!singleUser.name}
                 />
             ) : (
                 <Users
@@ -141,7 +143,6 @@ function DashboardRight({
                         new RegExp(input, "i").test(user.name)
                     )}
                     showSingleUser={(user) => setSingleUser(user)}
-                    enter={!singleUser.name}
                 />
             )}
 

@@ -32,7 +32,12 @@ afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
 
 const TestComponent = () => {
-    const { setFilter, users, downloadLink, loading, error } = useFetch();
+    const {
+        setFilter,
+        data: { users, downloadLink },
+        loading,
+        error,
+    } = useFetch();
     return (
         <>
             {users.map((user) => (

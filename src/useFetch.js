@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const axiosParams = {
+const constantParams = {
+    exc: "login",
+    results: 5,
+};
+
+let variableParams = {
     gender: "all",
     nat: "",
     page: 1,
-    exc: "login",
-    results: 5,
 };
 
 function parseDataFromAPI(data) {
@@ -45,8 +48,9 @@ function parseDataFromAPI(data) {
 
 function buildDownloadLink(initialUrl) {
     let downloadLink = `${initialUrl}?`;
-    for (const param in axiosParams) {
-        downloadLink += `${param}=${axiosParams[param]}&`;
+    const combinedParams = { ...variableParams, ...constantParams };
+    for (const param in combinedParams) {
+        downloadLink += `${param}=${combinedParams[param]}&`;
     }
     downloadLink += "format=csv&noinfo&dl";
     return downloadLink;
@@ -61,17 +65,18 @@ function useFetch() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
-    async function getUsers() {
+    async function getUsers(axiosParams = variableParams) {
         setLoading(true);
         error !== "" && setError("");
         try {
             const { data: dataFromAPI } = await axios.get(initialUrl, {
-                params: axiosParams,
+                params: { ...axiosParams, ...constantParams },
             });
             if (dataFromAPI.error)
                 throw new Error("Server error occurred, try again");
             const users = parseDataFromAPI(dataFromAPI.results);
             const downloadLink = buildDownloadLink(initialUrl);
+            variableParams = { ...axiosParams };
             setData({
                 ...data,
                 users,
@@ -90,24 +95,34 @@ function useFetch() {
     }, []);
 
     function setFilter(field, value) {
+        // Clone variable params so the header in DashboardRight changes
+        // only after users have been gotten from API
+        const variableParamsCopy = { ...variableParams };
         switch (field) {
             case "page":
             case "nat":
             case "gender":
-                axiosParams[field] = value;
+                variableParamsCopy[field] = value;
                 // Go back to page 1 if filtering on other fields apart from "page"
-                if (field !== "page") axiosParams.page = 1;
+                if (field !== "page") variableParamsCopy.page = 1;
                 break;
             default:
-                axiosParams.page = 1;
-                axiosParams.nat = "";
-                axiosParams.gender = "all";
+                variableParamsCopy.page = 1;
+                variableParamsCopy.nat = "";
+                variableParamsCopy.gender = "all";
                 break;
         }
-        getUsers();
+        // Copy passed to getUsers function which updates variable params then sets new state
+        getUsers(variableParamsCopy);
     }
 
-    return { ...data, ...axiosParams, setFilter, loading, error };
+    return {
+        data: { ...data },
+        params: { ...variableParams },
+        setFilter,
+        loading,
+        error,
+    };
 }
 
 export default useFetch;

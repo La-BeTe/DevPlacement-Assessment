@@ -10,7 +10,7 @@ function App() {
         <div className="App">
             <DashboardLeft
                 setFilter={fetchHookData.setFilter}
-                gender={fetchHookData.gender}
+                gender={fetchHookData.params.gender}
             />
             <DashboardRight fetchHookData={fetchHookData} />
         </div>
