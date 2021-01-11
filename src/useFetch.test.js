@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { setupServer } from "msw/node";
 import { rest } from "msw";
 import {
@@ -10,55 +10,123 @@ import {
 import useFetch from "./useFetch";
 
 const server = setupServer(
-    rest.post("https://randomuser.me/api", (req, res, ctx) => {
+    rest.get("https://randomuser.me/api", (req, res, ctx) => {
         const page = req.url.searchParams.get("page");
         const gender = req.url.searchParams.get("gender");
-        const country = req.url.searchParams.get("country");
-        if (page) {
-            res(ctx.json(JSON.stringify(resultsAfterChangingPage)));
-        } else if (gender) {
-            res(ctx.json(JSON.stringify(resultsAfterChangingGender)));
-        } else if (country) {
-            res(ctx.json(JSON.stringify(resultsAfterChangingCountry)));
+        const country = req.url.searchParams.get("nat");
+        // The arrangement of this 'if' block is fixed as useFetch doesn't reset params passed to axios
+        if (country === "GB") {
+            return res(ctx.json(resultsAfterChangingCountry));
+        } else if (gender === "female") {
+            return res(ctx.json(resultsAfterChangingGender));
+        } else if (page === "2") {
+            return res(ctx.json(resultsAfterChangingPage));
         } else {
-            res(ctx.json(JSON.stringify(results)));
+            return res(ctx.json(results));
         }
     })
 );
 
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
+
 const TestComponent = () => {
-    const url = "https://randomuser.me/api?exc=login&results=5&seed=foobar";
-    const {
-        setFilter,
-        users,
-        downloadLink,
-        currentUrl,
-        loading,
-        error,
-    } = useFetch();
+    const { setFilter, users, downloadLink, loading, error } = useFetch();
     return (
         <>
             {users.map((user) => (
-                <p key={user.phone}>{user.name}</p>
+                <p data-testid="user" key={user.id}>
+                    {user.name}
+                </p>
             ))}
-            <div data-testid="loading">{loading}</div>
+            <div data-testid="loading">{loading.toString()}</div>
             <div data-testid="error">{error}</div>
             <div data-testid="downloadLink">{downloadLink}</div>
-            <div data-testid="currentUrl">{currentUrl}</div>
-            <button onClick={() => setFilter("page", 1)}>Previous Page</button>
             <button onClick={() => setFilter("page", 2)}>Next Page</button>
             <button onClick={() => setFilter("gender", "female")}>
-                Filter By Gender
+                Filter By Female Gender
             </button>
-            <button onClick={() => setFilter("country", "gb")}>
-                Filter By Country
-            </button>
+            <button onClick={() => setFilter("nat", "GB")}>Filter By UK</button>
         </>
     );
 };
 
-test("should return default results if no filter provided", () => {
+test("should return default results if no filter is provided", async () => {
     render(<TestComponent />);
-    expect(screen.getByText(/britney sims/i)).toBeInTheDocument();
-    expect(screen.getByTestId("loading").innerText).toEqual("false");
+    const users = await waitFor(() => screen.getAllByTestId("user"));
+    expect(users).toHaveLength(5);
+    users.forEach((user, i) => {
+        let name =
+            results.results[i].name.first + " " + results.results[i].name.last;
+        expect(user).toHaveTextContent(name);
+    });
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    expect(screen.getByTestId("error")).toBeEmptyDOMElement();
+});
+
+test("should return new page of results if filter is set to a new page", async () => {
+    render(<TestComponent />);
+    await screen.findAllByTestId("user");
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    fireEvent.click(screen.getByText(/next page/i));
+    expect(screen.getByTestId("loading")).toHaveTextContent("true");
+    await screen.findByText(/avery harris/i);
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    const users = await screen.findAllByTestId("user");
+    users.forEach((user, i) => {
+        let name =
+            resultsAfterChangingPage.results[i].name.first +
+            " " +
+            resultsAfterChangingPage.results[i].name.last;
+        expect(user).toHaveTextContent(name);
+    });
+});
+
+test("should return users with a different gender if gender filter is changed", async () => {
+    render(<TestComponent />);
+    await screen.findAllByTestId("user");
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    fireEvent.click(screen.getByText(/filter by female gender/i));
+    expect(screen.getByTestId("loading")).toHaveTextContent("true");
+    await screen.findByText(/imogen edwards/i);
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    const users = await screen.findAllByTestId("user");
+    users.forEach((user, i) => {
+        let name =
+            resultsAfterChangingGender.results[i].name.first +
+            " " +
+            resultsAfterChangingGender.results[i].name.last;
+        expect(user).toHaveTextContent(name);
+    });
+});
+
+test("should return users in a different country if country filter is changed", async () => {
+    render(<TestComponent />);
+    await screen.findAllByTestId("user");
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    fireEvent.click(screen.getByText(/filter by uk/i));
+    expect(screen.getByTestId("loading")).toHaveTextContent("true");
+    await screen.findByText(/becky sims/i);
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    const users = await screen.findAllByTestId("user");
+    users.forEach((user, i) => {
+        let name =
+            resultsAfterChangingCountry.results[i].name.first +
+            " " +
+            resultsAfterChangingCountry.results[i].name.last;
+        expect(user).toHaveTextContent(name);
+    });
+});
+
+test("should set error string if API return an error", async () => {
+    server.use(
+        rest.get("https://randomuser.me/api", (req, res, ctx) => {
+            return res(ctx.json({ error: "Uh oh an error occurred" }));
+        })
+    );
+    render(<TestComponent />);
+    expect(
+        await screen.findByText(/server error occurr?ed/i)
+    ).toBeInTheDocument();
 });

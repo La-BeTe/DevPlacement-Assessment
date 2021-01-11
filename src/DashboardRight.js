@@ -81,6 +81,7 @@ function DashboardRight({
                             value={input}
                             onChange={handleInputChange}
                             placeholder="Find in list"
+                            data-testid="input-field"
                         />
                     </div>
                     <FormControl id={countrySelectVisible ? "" : "hide"}>

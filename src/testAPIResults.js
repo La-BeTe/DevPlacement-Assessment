@@ -1,12 +1,587 @@
 // The results in this file were gotten after making requests to 'https://randomuser.me/api?exc=login&seed=foobar&results=5
 
-export const results = {"results":[{"gender":"female","name":{"title":"Miss","first":"Britney","last":"Sims"},"location":{"street":{"number":9617,"name":"Tara Street"},"city":"Dublin","state":"Westmeath","country":"Ireland","postcode":66909,"coordinates":{"latitude":"17.2334","longitude":"88.9196"},"timezone":{"offset":"+4:30","description":"Kabul"}},"email":"britney.sims@example.com","dob":{"date":"1989-11-17T21:56:57.779Z","age":32},"registered":{"date":"2014-05-20T20:54:39.692Z","age":7},"phone":"011-578-8963","cell":"081-136-4597","id":{"name":"PPS","value":"8705633T"},"picture":{"large":"https://randomuser.me/api/portraits/women/62.jpg","medium":"https://randomuser.me/api/portraits/med/women/62.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/62.jpg"},"nat":"IE"},{"gender":"female","name":{"title":"Ms","first":"Imogen","last":"Edwards"},"location":{"street":{"number":7394,"name":"Durham Street"},"city":"Dunedin","state":"Canterbury","country":"New Zealand","postcode":21471,"coordinates":{"latitude":"-34.9050","longitude":"-113.6840"},"timezone":{"offset":"+9:00","description":"Tokyo, Seoul, Osaka, Sapporo, Yakutsk"}},"email":"imogen.edwards@example.com","dob":{"date":"1972-05-03T22:26:50.080Z","age":49},"registered":{"date":"2016-04-10T14:57:49.011Z","age":5},"phone":"(179)-998-3204","cell":"(283)-969-5160","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/95.jpg","medium":"https://randomuser.me/api/portraits/med/women/95.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/95.jpg"},"nat":"NZ"},{"gender":"female","name":{"title":"Ms","first":"Lillian","last":"Simmmons"},"location":{"street":{"number":1317,"name":"Ormond Quay"},"city":"Ballinasloe","state":"Cork City","country":"Ireland","postcode":87859,"coordinates":{"latitude":"38.1694","longitude":"-93.8184"},"timezone":{"offset":"+9:00","description":"Tokyo, Seoul, Osaka, Sapporo, Yakutsk"}},"email":"lillian.simmmons@example.com","dob":{"date":"1973-07-02T16:26:17.885Z","age":48},"registered":{"date":"2016-12-10T22:53:16.376Z","age":5},"phone":"041-937-8293","cell":"081-513-7697","id":{"name":"PPS","value":"6505520T"},"picture":{"large":"https://randomuser.me/api/portraits/women/74.jpg","medium":"https://randomuser.me/api/portraits/med/women/74.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/74.jpg"},"nat":"IE"},{"gender":"female","name":{"title":"Ms","first":"Jessica","last":"Torres"},"location":{"street":{"number":3685,"name":"The Grove"},"city":"City of London","state":"Humberside","country":"United Kingdom","postcode":"GP1N 0XE","coordinates":{"latitude":"67.9751","longitude":"-132.6000"},"timezone":{"offset":"+5:30","description":"Bombay, Calcutta, Madras, New Delhi"}},"email":"jessica.torres@example.com","dob":{"date":"1984-07-04T14:01:09.008Z","age":37},"registered":{"date":"2018-05-06T04:14:55.400Z","age":3},"phone":"016974 94194","cell":"0719-098-332","id":{"name":"NINO","value":"BA 47 68 76 S"},"picture":{"large":"https://randomuser.me/api/portraits/women/63.jpg","medium":"https://randomuser.me/api/portraits/med/women/63.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/63.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Alban","last":"Leclerc"},"location":{"street":{"number":640,"name":"Rue du Moulin"},"city":"Vitry-sur-Seine","state":"Haute-Garonne","country":"France","postcode":30303,"coordinates":{"latitude":"22.6135","longitude":"153.7383"},"timezone":{"offset":"+10:00","description":"Eastern Australia, Guam, Vladivostok"}},"email":"alban.leclerc@example.com","dob":{"date":"1981-12-07T23:29:45.002Z","age":40},"registered":{"date":"2002-06-04T17:56:12.439Z","age":19},"phone":"01-37-34-40-45","cell":"06-38-77-70-40","id":{"name":"INSEE","value":"1NNaN17920132 27"},"picture":{"large":"https://randomuser.me/api/portraits/men/46.jpg","medium":"https://randomuser.me/api/portraits/med/men/46.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/46.jpg"},"nat":"FR"}],"info":{"seed":"foobar","results":5,"page":1,"version":"1.3"}};
+export const results = {
+    results: [
+        {
+            gender: "female",
+            name: { title: "Miss", first: "Britney", last: "Sims" },
+            location: {
+                street: { number: 9617, name: "Tara Street" },
+                city: "Dublin",
+                state: "Westmeath",
+                country: "Ireland",
+                postcode: 66909,
+                coordinates: { latitude: "17.2334", longitude: "88.9196" },
+                timezone: { offset: "+4:30", description: "Kabul" },
+            },
+            email: "britney.sims@example.com",
+            dob: { date: "1989-11-17T21:56:57.779Z", age: 32 },
+            registered: { date: "2014-05-20T20:54:39.692Z", age: 7 },
+            phone: "011-578-8963",
+            cell: "081-136-4597",
+            id: { name: "PPS", value: "8705633T" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/62.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/62.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/62.jpg",
+            },
+            nat: "IE",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Imogen", last: "Edwards" },
+            location: {
+                street: { number: 7394, name: "Durham Street" },
+                city: "Dunedin",
+                state: "Canterbury",
+                country: "New Zealand",
+                postcode: 21471,
+                coordinates: { latitude: "-34.9050", longitude: "-113.6840" },
+                timezone: {
+                    offset: "+9:00",
+                    description: "Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                },
+            },
+            email: "imogen.edwards@example.com",
+            dob: { date: "1972-05-03T22:26:50.080Z", age: 49 },
+            registered: { date: "2016-04-10T14:57:49.011Z", age: 5 },
+            phone: "(179)-998-3204",
+            cell: "(283)-969-5160",
+            id: { name: "", value: null },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/95.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/95.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/95.jpg",
+            },
+            nat: "NZ",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Lillian", last: "Simmmons" },
+            location: {
+                street: { number: 1317, name: "Ormond Quay" },
+                city: "Ballinasloe",
+                state: "Cork City",
+                country: "Ireland",
+                postcode: 87859,
+                coordinates: { latitude: "38.1694", longitude: "-93.8184" },
+                timezone: {
+                    offset: "+9:00",
+                    description: "Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                },
+            },
+            email: "lillian.simmmons@example.com",
+            dob: { date: "1973-07-02T16:26:17.885Z", age: 48 },
+            registered: { date: "2016-12-10T22:53:16.376Z", age: 5 },
+            phone: "041-937-8293",
+            cell: "081-513-7697",
+            id: { name: "PPS", value: "6505520T" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/74.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/74.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/74.jpg",
+            },
+            nat: "IE",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Jessica", last: "Torres" },
+            location: {
+                street: { number: 3685, name: "The Grove" },
+                city: "City of London",
+                state: "Humberside",
+                country: "United Kingdom",
+                postcode: "GP1N 0XE",
+                coordinates: { latitude: "67.9751", longitude: "-132.6000" },
+                timezone: {
+                    offset: "+5:30",
+                    description: "Bombay, Calcutta, Madras, New Delhi",
+                },
+            },
+            email: "jessica.torres@example.com",
+            dob: { date: "1984-07-04T14:01:09.008Z", age: 37 },
+            registered: { date: "2018-05-06T04:14:55.400Z", age: 3 },
+            phone: "016974 94194",
+            cell: "0719-098-332",
+            id: { name: "NINO", value: "BA 47 68 76 S" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/63.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/63.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/63.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Alban", last: "Leclerc" },
+            location: {
+                street: { number: 640, name: "Rue du Moulin" },
+                city: "Vitry-sur-Seine",
+                state: "Haute-Garonne",
+                country: "France",
+                postcode: 30303,
+                coordinates: { latitude: "22.6135", longitude: "153.7383" },
+                timezone: {
+                    offset: "+10:00",
+                    description: "Eastern Australia, Guam, Vladivostok",
+                },
+            },
+            email: "alban.leclerc@example.com",
+            dob: { date: "1981-12-07T23:29:45.002Z", age: 40 },
+            registered: { date: "2002-06-04T17:56:12.439Z", age: 19 },
+            phone: "01-37-34-40-45",
+            cell: "06-38-77-70-40",
+            id: { name: "INSEE", value: "1NNaN17920132 27" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/46.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/46.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/46.jpg",
+            },
+            nat: "FR",
+        },
+    ],
+    info: { seed: "foobar", results: 5, page: 1, version: "1.3" },
+};
 
 // This result was gotten by appending &page=2 to the original url
-export const resultsAfterChangingPage = {"results":[{"gender":"female","name":{"title":"Miss","first":"Avery","last":"Harris"},"location":{"street":{"number":2107,"name":"West Ave"},"city":"Kingston","state":"Saskatchewan","country":"Canada","postcode":"N4S 5A7","coordinates":{"latitude":"-60.8133","longitude":"106.0280"},"timezone":{"offset":"-9:00","description":"Alaska"}},"email":"avery.harris@example.com","dob":{"date":"1965-06-13T20:10:49.711Z","age":56},"registered":{"date":"2002-05-16T09:53:41.802Z","age":19},"phone":"529-979-1847","cell":"146-901-9866","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/73.jpg","medium":"https://randomuser.me/api/portraits/med/women/73.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/73.jpg"},"nat":"CA"},{"gender":"female","name":{"title":"Ms","first":"Flora","last":"Vincent"},"location":{"street":{"number":536,"name":"Quai Charles-De-Gaulle"},"city":"Nîmes","state":"Meuse","country":"France","postcode":71452,"coordinates":{"latitude":"68.1649","longitude":"-14.0648"},"timezone":{"offset":"-1:00","description":"Azores, Cape Verde Islands"}},"email":"flora.vincent@example.com","dob":{"date":"1949-05-22T13:27:49.772Z","age":72},"registered":{"date":"2016-05-13T09:33:44.374Z","age":5},"phone":"05-44-89-53-11","cell":"06-25-42-51-32","id":{"name":"INSEE","value":"2NNaN94473706 60"},"picture":{"large":"https://randomuser.me/api/portraits/women/81.jpg","medium":"https://randomuser.me/api/portraits/med/women/81.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/81.jpg"},"nat":"FR"},{"gender":"female","name":{"title":"Ms","first":"Marina","last":"Mäder"},"location":{"street":{"number":5644,"name":"Kapellenweg"},"city":"Wasungen","state":"Brandenburg","country":"Germany","postcode":64866,"coordinates":{"latitude":"36.8329","longitude":"-6.4741"},"timezone":{"offset":"-3:30","description":"Newfoundland"}},"email":"marina.mader@example.com","dob":{"date":"1963-03-26T01:37:55.771Z","age":58},"registered":{"date":"2004-09-21T03:51:28.286Z","age":17},"phone":"0159-9488904","cell":"0172-6216998","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/78.jpg","medium":"https://randomuser.me/api/portraits/med/women/78.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/78.jpg"},"nat":"DE"},{"gender":"female","name":{"title":"Ms","first":"Janna","last":"Achatz"},"location":{"street":{"number":5323,"name":"Industriestraße"},"city":"Wiehe","state":"Saarland","country":"Germany","postcode":44754,"coordinates":{"latitude":"-19.8184","longitude":"92.5271"},"timezone":{"offset":"-6:00","description":"Central Time (US & Canada), Mexico City"}},"email":"janna.achatz@example.com","dob":{"date":"1948-11-14T12:20:21.157Z","age":73},"registered":{"date":"2003-08-24T10:04:51.239Z","age":18},"phone":"0174-4880236","cell":"0170-0242495","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/23.jpg","medium":"https://randomuser.me/api/portraits/med/women/23.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/23.jpg"},"nat":"DE"},{"gender":"female","name":{"title":"Mademoiselle","first":"Grazia","last":"Blanc"},"location":{"street":{"number":542,"name":"Rue Barrème"},"city":"Bissone","state":"Vaud","country":"Switzerland","postcode":5547,"coordinates":{"latitude":"17.3565","longitude":"171.6425"},"timezone":{"offset":"+5:00","description":"Ekaterinburg, Islamabad, Karachi, Tashkent"}},"email":"grazia.blanc@example.com","dob":{"date":"1968-05-17T22:41:15.019Z","age":53},"registered":{"date":"2013-09-06T20:21:30.981Z","age":8},"phone":"075 393 76 78","cell":"077 959 86 35","id":{"name":"AVS","value":"756.5661.5473.10"},"picture":{"large":"https://randomuser.me/api/portraits/women/13.jpg","medium":"https://randomuser.me/api/portraits/med/women/13.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/13.jpg"},"nat":"CH"}],"info":{"seed":"foobar","results":5,"page":2,"version":"1.3"}};
+export const resultsAfterChangingPage = {
+    results: [
+        {
+            gender: "female",
+            name: { title: "Miss", first: "Avery", last: "Harris" },
+            location: {
+                street: { number: 2107, name: "West Ave" },
+                city: "Kingston",
+                state: "Saskatchewan",
+                country: "Canada",
+                postcode: "N4S 5A7",
+                coordinates: { latitude: "-60.8133", longitude: "106.0280" },
+                timezone: { offset: "-9:00", description: "Alaska" },
+            },
+            email: "avery.harris@example.com",
+            dob: { date: "1965-06-13T20:10:49.711Z", age: 56 },
+            registered: { date: "2002-05-16T09:53:41.802Z", age: 19 },
+            phone: "529-979-1847",
+            cell: "146-901-9866",
+            id: { name: "", value: null },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/73.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/73.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/73.jpg",
+            },
+            nat: "CA",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Flora", last: "Vincent" },
+            location: {
+                street: { number: 536, name: "Quai Charles-De-Gaulle" },
+                city: "Nîmes",
+                state: "Meuse",
+                country: "France",
+                postcode: 71452,
+                coordinates: { latitude: "68.1649", longitude: "-14.0648" },
+                timezone: {
+                    offset: "-1:00",
+                    description: "Azores, Cape Verde Islands",
+                },
+            },
+            email: "flora.vincent@example.com",
+            dob: { date: "1949-05-22T13:27:49.772Z", age: 72 },
+            registered: { date: "2016-05-13T09:33:44.374Z", age: 5 },
+            phone: "05-44-89-53-11",
+            cell: "06-25-42-51-32",
+            id: { name: "INSEE", value: "2NNaN94473706 60" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/81.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/81.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/81.jpg",
+            },
+            nat: "FR",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Marina", last: "Mäder" },
+            location: {
+                street: { number: 5644, name: "Kapellenweg" },
+                city: "Wasungen",
+                state: "Brandenburg",
+                country: "Germany",
+                postcode: 64866,
+                coordinates: { latitude: "36.8329", longitude: "-6.4741" },
+                timezone: { offset: "-3:30", description: "Newfoundland" },
+            },
+            email: "marina.mader@example.com",
+            dob: { date: "1963-03-26T01:37:55.771Z", age: 58 },
+            registered: { date: "2004-09-21T03:51:28.286Z", age: 17 },
+            phone: "0159-9488904",
+            cell: "0172-6216998",
+            id: { name: "", value: null },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/78.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/78.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/78.jpg",
+            },
+            nat: "DE",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Janna", last: "Achatz" },
+            location: {
+                street: { number: 5323, name: "Industriestraße" },
+                city: "Wiehe",
+                state: "Saarland",
+                country: "Germany",
+                postcode: 44754,
+                coordinates: { latitude: "-19.8184", longitude: "92.5271" },
+                timezone: {
+                    offset: "-6:00",
+                    description: "Central Time (US & Canada), Mexico City",
+                },
+            },
+            email: "janna.achatz@example.com",
+            dob: { date: "1948-11-14T12:20:21.157Z", age: 73 },
+            registered: { date: "2003-08-24T10:04:51.239Z", age: 18 },
+            phone: "0174-4880236",
+            cell: "0170-0242495",
+            id: { name: "", value: null },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/23.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/23.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/23.jpg",
+            },
+            nat: "DE",
+        },
+        {
+            gender: "female",
+            name: { title: "Mademoiselle", first: "Grazia", last: "Blanc" },
+            location: {
+                street: { number: 542, name: "Rue Barrème" },
+                city: "Bissone",
+                state: "Vaud",
+                country: "Switzerland",
+                postcode: 5547,
+                coordinates: { latitude: "17.3565", longitude: "171.6425" },
+                timezone: {
+                    offset: "+5:00",
+                    description: "Ekaterinburg, Islamabad, Karachi, Tashkent",
+                },
+            },
+            email: "grazia.blanc@example.com",
+            dob: { date: "1968-05-17T22:41:15.019Z", age: 53 },
+            registered: { date: "2013-09-06T20:21:30.981Z", age: 8 },
+            phone: "075 393 76 78",
+            cell: "077 959 86 35",
+            id: { name: "AVS", value: "756.5661.5473.10" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/13.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/13.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/13.jpg",
+            },
+            nat: "CH",
+        },
+    ],
+    info: { seed: "foobar", results: 5, page: 2, version: "1.3" },
+};
 
 // This result was gotten by appending &nat=gb to the original url
-export const resultsAfterChangingCountry = {"results":[{"gender":"female","name":{"title":"Miss","first":"Becky","last":"Sims"},"location":{"street":{"number":9617,"name":"The Avenue"},"city":"Ely","state":"Warwickshire","country":"United Kingdom","postcode":"XM26 7YS","coordinates":{"latitude":"17.2334","longitude":"88.9196"},"timezone":{"offset":"+4:30","description":"Kabul"}},"email":"becky.sims@example.com","dob":{"date":"1989-11-17T21:56:57.779Z","age":32},"registered":{"date":"2014-05-20T20:54:39.692Z","age":7},"phone":"016977 50180","cell":"0750-552-056","id":{"name":"NINO","value":"AX 82 52 01 E"},"picture":{"large":"https://randomuser.me/api/portraits/women/62.jpg","medium":"https://randomuser.me/api/portraits/med/women/62.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/62.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Austin","last":"Fowler"},"location":{"street":{"number":41,"name":"Fairview Road"},"city":"Lisburn","state":"Wiltshire","country":"United Kingdom","postcode":"FK7I 4LA","coordinates":{"latitude":"-34.9050","longitude":"-113.6840"},"timezone":{"offset":"-3:30","description":"Newfoundland"}},"email":"austin.fowler@example.com","dob":{"date":"1993-09-03T21:28:18.337Z","age":28},"registered":{"date":"2009-04-27T22:42:34.067Z","age":12},"phone":"01794 05648","cell":"0747-687-674","id":{"name":"NINO","value":"AL 01 79 20 E"},"picture":{"large":"https://randomuser.me/api/portraits/men/55.jpg","medium":"https://randomuser.me/api/portraits/med/men/55.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/55.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Duane","last":"White"},"location":{"street":{"number":3341,"name":"The Crescent"},"city":"Leeds","state":"Rutland","country":"United Kingdom","postcode":"U40 7YW","coordinates":{"latitude":"38.1694","longitude":"-93.8184"},"timezone":{"offset":"+4:00","description":"Abu Dhabi, Muscat, Baku, Tbilisi"}},"email":"duane.white@example.com","dob":{"date":"1972-12-13T18:17:38.048Z","age":49},"registered":{"date":"2016-05-19T08:57:55.924Z","age":5},"phone":"019467 35287","cell":"0771-854-407","id":{"name":"NINO","value":"CP 75 79 92 U"},"picture":{"large":"https://randomuser.me/api/portraits/men/39.jpg","medium":"https://randomuser.me/api/portraits/med/men/39.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/39.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Jason","last":"Hill"},"location":{"street":{"number":3449,"name":"Grange Road"},"city":"Cambridge","state":"Powys","country":"United Kingdom","postcode":"EX23 2QP","coordinates":{"latitude":"67.9751","longitude":"-132.6000"},"timezone":{"offset":"+3:30","description":"Tehran"}},"email":"jason.hill@example.com","dob":{"date":"1961-06-27T09:41:09.379Z","age":60},"registered":{"date":"2017-07-22T01:53:40.879Z","age":4},"phone":"01614 304926","cell":"0704-647-156","id":{"name":"NINO","value":"YA 89 68 95 G"},"picture":{"large":"https://randomuser.me/api/portraits/men/14.jpg","medium":"https://randomuser.me/api/portraits/med/men/14.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/14.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Isaac","last":"Murphy"},"location":{"street":{"number":9336,"name":"Manchester Road"},"city":"Bangor","state":"Gwent","country":"United Kingdom","postcode":"HN3 0YL","coordinates":{"latitude":"22.6135","longitude":"153.7383"},"timezone":{"offset":"-3:00","description":"Brazil, Buenos Aires, Georgetown"}},"email":"isaac.murphy@example.com","dob":{"date":"1966-07-02T04:37:52.140Z","age":55},"registered":{"date":"2018-09-15T18:21:23.860Z","age":3},"phone":"017687 64093","cell":"0713-044-669","id":{"name":"NINO","value":"XH 62 74 60 C"},"picture":{"large":"https://randomuser.me/api/portraits/men/8.jpg","medium":"https://randomuser.me/api/portraits/med/men/8.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/8.jpg"},"nat":"GB"}],"info":{"seed":"foobar","results":5,"page":1,"version":"1.3"}};
+export const resultsAfterChangingCountry = {
+    results: [
+        {
+            gender: "female",
+            name: { title: "Miss", first: "Becky", last: "Sims" },
+            location: {
+                street: { number: 9617, name: "The Avenue" },
+                city: "Ely",
+                state: "Warwickshire",
+                country: "United Kingdom",
+                postcode: "XM26 7YS",
+                coordinates: { latitude: "17.2334", longitude: "88.9196" },
+                timezone: { offset: "+4:30", description: "Kabul" },
+            },
+            email: "becky.sims@example.com",
+            dob: { date: "1989-11-17T21:56:57.779Z", age: 32 },
+            registered: { date: "2014-05-20T20:54:39.692Z", age: 7 },
+            phone: "016977 50180",
+            cell: "0750-552-056",
+            id: { name: "NINO", value: "AX 82 52 01 E" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/62.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/62.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/62.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Austin", last: "Fowler" },
+            location: {
+                street: { number: 41, name: "Fairview Road" },
+                city: "Lisburn",
+                state: "Wiltshire",
+                country: "United Kingdom",
+                postcode: "FK7I 4LA",
+                coordinates: { latitude: "-34.9050", longitude: "-113.6840" },
+                timezone: { offset: "-3:30", description: "Newfoundland" },
+            },
+            email: "austin.fowler@example.com",
+            dob: { date: "1993-09-03T21:28:18.337Z", age: 28 },
+            registered: { date: "2009-04-27T22:42:34.067Z", age: 12 },
+            phone: "01794 05648",
+            cell: "0747-687-674",
+            id: { name: "NINO", value: "AL 01 79 20 E" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/55.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/55.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/55.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Duane", last: "White" },
+            location: {
+                street: { number: 3341, name: "The Crescent" },
+                city: "Leeds",
+                state: "Rutland",
+                country: "United Kingdom",
+                postcode: "U40 7YW",
+                coordinates: { latitude: "38.1694", longitude: "-93.8184" },
+                timezone: {
+                    offset: "+4:00",
+                    description: "Abu Dhabi, Muscat, Baku, Tbilisi",
+                },
+            },
+            email: "duane.white@example.com",
+            dob: { date: "1972-12-13T18:17:38.048Z", age: 49 },
+            registered: { date: "2016-05-19T08:57:55.924Z", age: 5 },
+            phone: "019467 35287",
+            cell: "0771-854-407",
+            id: { name: "NINO", value: "CP 75 79 92 U" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/39.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/39.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/39.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Jason", last: "Hill" },
+            location: {
+                street: { number: 3449, name: "Grange Road" },
+                city: "Cambridge",
+                state: "Powys",
+                country: "United Kingdom",
+                postcode: "EX23 2QP",
+                coordinates: { latitude: "67.9751", longitude: "-132.6000" },
+                timezone: { offset: "+3:30", description: "Tehran" },
+            },
+            email: "jason.hill@example.com",
+            dob: { date: "1961-06-27T09:41:09.379Z", age: 60 },
+            registered: { date: "2017-07-22T01:53:40.879Z", age: 4 },
+            phone: "01614 304926",
+            cell: "0704-647-156",
+            id: { name: "NINO", value: "YA 89 68 95 G" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/14.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/14.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/14.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Isaac", last: "Murphy" },
+            location: {
+                street: { number: 9336, name: "Manchester Road" },
+                city: "Bangor",
+                state: "Gwent",
+                country: "United Kingdom",
+                postcode: "HN3 0YL",
+                coordinates: { latitude: "22.6135", longitude: "153.7383" },
+                timezone: {
+                    offset: "-3:00",
+                    description: "Brazil, Buenos Aires, Georgetown",
+                },
+            },
+            email: "isaac.murphy@example.com",
+            dob: { date: "1966-07-02T04:37:52.140Z", age: 55 },
+            registered: { date: "2018-09-15T18:21:23.860Z", age: 3 },
+            phone: "017687 64093",
+            cell: "0713-044-669",
+            id: { name: "NINO", value: "XH 62 74 60 C" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/8.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/8.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/8.jpg",
+            },
+            nat: "GB",
+        },
+    ],
+    info: { seed: "foobar", results: 5, page: 1, version: "1.3" },
+};
 
 // This result was gotten by appending &gender=female to the original url
-export const resultsAfterChangingGender = {"results":[{"gender":"female","name":{"title":"Miss","first":"Britney","last":"Sims"},"location":{"street":{"number":9617,"name":"Tara Street"},"city":"Dublin","state":"Westmeath","country":"Ireland","postcode":66909,"coordinates":{"latitude":"17.2334","longitude":"88.9196"},"timezone":{"offset":"+4:30","description":"Kabul"}},"email":"britney.sims@example.com","dob":{"date":"1989-11-17T21:56:57.779Z","age":32},"registered":{"date":"2014-05-20T20:54:39.692Z","age":7},"phone":"011-578-8963","cell":"081-136-4597","id":{"name":"PPS","value":"8705633T"},"picture":{"large":"https://randomuser.me/api/portraits/women/62.jpg","medium":"https://randomuser.me/api/portraits/med/women/62.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/62.jpg"},"nat":"IE"},{"gender":"female","name":{"title":"Ms","first":"Imogen","last":"Edwards"},"location":{"street":{"number":7394,"name":"Durham Street"},"city":"Dunedin","state":"Canterbury","country":"New Zealand","postcode":21471,"coordinates":{"latitude":"-34.9050","longitude":"-113.6840"},"timezone":{"offset":"+9:00","description":"Tokyo, Seoul, Osaka, Sapporo, Yakutsk"}},"email":"imogen.edwards@example.com","dob":{"date":"1972-05-03T22:26:50.080Z","age":49},"registered":{"date":"2016-04-10T14:57:49.011Z","age":5},"phone":"(179)-998-3204","cell":"(283)-969-5160","id":{"name":"","value":null},"picture":{"large":"https://randomuser.me/api/portraits/women/95.jpg","medium":"https://randomuser.me/api/portraits/med/women/95.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/95.jpg"},"nat":"NZ"},{"gender":"female","name":{"title":"Ms","first":"Lillian","last":"Simmmons"},"location":{"street":{"number":1317,"name":"Ormond Quay"},"city":"Ballinasloe","state":"Cork City","country":"Ireland","postcode":87859,"coordinates":{"latitude":"38.1694","longitude":"-93.8184"},"timezone":{"offset":"+9:00","description":"Tokyo, Seoul, Osaka, Sapporo, Yakutsk"}},"email":"lillian.simmmons@example.com","dob":{"date":"1973-07-02T16:26:17.885Z","age":48},"registered":{"date":"2016-12-10T22:53:16.376Z","age":5},"phone":"041-937-8293","cell":"081-513-7697","id":{"name":"PPS","value":"6505520T"},"picture":{"large":"https://randomuser.me/api/portraits/women/74.jpg","medium":"https://randomuser.me/api/portraits/med/women/74.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/74.jpg"},"nat":"IE"},{"gender":"female","name":{"title":"Ms","first":"Jessica","last":"Torres"},"location":{"street":{"number":3685,"name":"The Grove"},"city":"City of London","state":"Humberside","country":"United Kingdom","postcode":"GP1N 0XE","coordinates":{"latitude":"67.9751","longitude":"-132.6000"},"timezone":{"offset":"+5:30","description":"Bombay, Calcutta, Madras, New Delhi"}},"email":"jessica.torres@example.com","dob":{"date":"1984-07-04T14:01:09.008Z","age":37},"registered":{"date":"2018-05-06T04:14:55.400Z","age":3},"phone":"016974 94194","cell":"0719-098-332","id":{"name":"NINO","value":"BA 47 68 76 S"},"picture":{"large":"https://randomuser.me/api/portraits/women/63.jpg","medium":"https://randomuser.me/api/portraits/med/women/63.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/women/63.jpg"},"nat":"GB"},{"gender":"male","name":{"title":"Mr","first":"Alban","last":"Leclerc"},"location":{"street":{"number":640,"name":"Rue du Moulin"},"city":"Vitry-sur-Seine","state":"Haute-Garonne","country":"France","postcode":30303,"coordinates":{"latitude":"22.6135","longitude":"153.7383"},"timezone":{"offset":"+10:00","description":"Eastern Australia, Guam, Vladivostok"}},"email":"alban.leclerc@example.com","dob":{"date":"1981-12-07T23:29:45.002Z","age":40},"registered":{"date":"2002-06-04T17:56:12.439Z","age":19},"phone":"01-37-34-40-45","cell":"06-38-77-70-40","id":{"name":"INSEE","value":"1NNaN17920132 27"},"picture":{"large":"https://randomuser.me/api/portraits/men/46.jpg","medium":"https://randomuser.me/api/portraits/med/men/46.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/46.jpg"},"nat":"FR"}],"info":{"seed":"foobar","results":5,"page":1,"version":"1.3"}};
+export const resultsAfterChangingGender = {
+    results: [
+        {
+            gender: "female",
+            name: { title: "Miss", first: "Britney", last: "Sims" },
+            location: {
+                street: { number: 9617, name: "Tara Street" },
+                city: "Dublin",
+                state: "Westmeath",
+                country: "Ireland",
+                postcode: 66909,
+                coordinates: { latitude: "17.2334", longitude: "88.9196" },
+                timezone: { offset: "+4:30", description: "Kabul" },
+            },
+            email: "britney.sims@example.com",
+            dob: { date: "1989-11-17T21:56:57.779Z", age: 32 },
+            registered: { date: "2014-05-20T20:54:39.692Z", age: 7 },
+            phone: "011-578-8963",
+            cell: "081-136-4597",
+            id: { name: "PPS", value: "8705633T" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/62.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/62.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/62.jpg",
+            },
+            nat: "IE",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Imogen", last: "Edwards" },
+            location: {
+                street: { number: 7394, name: "Durham Street" },
+                city: "Dunedin",
+                state: "Canterbury",
+                country: "New Zealand",
+                postcode: 21471,
+                coordinates: { latitude: "-34.9050", longitude: "-113.6840" },
+                timezone: {
+                    offset: "+9:00",
+                    description: "Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                },
+            },
+            email: "imogen.edwards@example.com",
+            dob: { date: "1972-05-03T22:26:50.080Z", age: 49 },
+            registered: { date: "2016-04-10T14:57:49.011Z", age: 5 },
+            phone: "(179)-998-3204",
+            cell: "(283)-969-5160",
+            id: { name: "", value: null },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/95.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/95.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/95.jpg",
+            },
+            nat: "NZ",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Lillian", last: "Simmmons" },
+            location: {
+                street: { number: 1317, name: "Ormond Quay" },
+                city: "Ballinasloe",
+                state: "Cork City",
+                country: "Ireland",
+                postcode: 87859,
+                coordinates: { latitude: "38.1694", longitude: "-93.8184" },
+                timezone: {
+                    offset: "+9:00",
+                    description: "Tokyo, Seoul, Osaka, Sapporo, Yakutsk",
+                },
+            },
+            email: "lillian.simmmons@example.com",
+            dob: { date: "1973-07-02T16:26:17.885Z", age: 48 },
+            registered: { date: "2016-12-10T22:53:16.376Z", age: 5 },
+            phone: "041-937-8293",
+            cell: "081-513-7697",
+            id: { name: "PPS", value: "6505520T" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/74.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/74.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/74.jpg",
+            },
+            nat: "IE",
+        },
+        {
+            gender: "female",
+            name: { title: "Ms", first: "Jessica", last: "Torres" },
+            location: {
+                street: { number: 3685, name: "The Grove" },
+                city: "City of London",
+                state: "Humberside",
+                country: "United Kingdom",
+                postcode: "GP1N 0XE",
+                coordinates: { latitude: "67.9751", longitude: "-132.6000" },
+                timezone: {
+                    offset: "+5:30",
+                    description: "Bombay, Calcutta, Madras, New Delhi",
+                },
+            },
+            email: "jessica.torres@example.com",
+            dob: { date: "1984-07-04T14:01:09.008Z", age: 37 },
+            registered: { date: "2018-05-06T04:14:55.400Z", age: 3 },
+            phone: "016974 94194",
+            cell: "0719-098-332",
+            id: { name: "NINO", value: "BA 47 68 76 S" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/women/63.jpg",
+                medium: "https://randomuser.me/api/portraits/med/women/63.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/women/63.jpg",
+            },
+            nat: "GB",
+        },
+        {
+            gender: "male",
+            name: { title: "Mr", first: "Alban", last: "Leclerc" },
+            location: {
+                street: { number: 640, name: "Rue du Moulin" },
+                city: "Vitry-sur-Seine",
+                state: "Haute-Garonne",
+                country: "France",
+                postcode: 30303,
+                coordinates: { latitude: "22.6135", longitude: "153.7383" },
+                timezone: {
+                    offset: "+10:00",
+                    description: "Eastern Australia, Guam, Vladivostok",
+                },
+            },
+            email: "alban.leclerc@example.com",
+            dob: { date: "1981-12-07T23:29:45.002Z", age: 40 },
+            registered: { date: "2002-06-04T17:56:12.439Z", age: 19 },
+            phone: "01-37-34-40-45",
+            cell: "06-38-77-70-40",
+            id: { name: "INSEE", value: "1NNaN17920132 27" },
+            picture: {
+                large: "https://randomuser.me/api/portraits/men/46.jpg",
+                medium: "https://randomuser.me/api/portraits/med/men/46.jpg",
+                thumbnail:
+                    "https://randomuser.me/api/portraits/thumb/men/46.jpg",
+            },
+            nat: "FR",
+        },
+    ],
+    info: { seed: "foobar", results: 5, page: 1, version: "1.3" },
+};

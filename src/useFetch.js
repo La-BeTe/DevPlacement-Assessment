@@ -5,6 +5,8 @@ const axiosParams = {
     gender: "all",
     nat: "",
     page: 1,
+    exc: "login",
+    results: 5,
 };
 
 function parseDataFromAPI(data) {
@@ -42,7 +44,7 @@ function parseDataFromAPI(data) {
 }
 
 function buildDownloadLink(initialUrl) {
-    let downloadLink = `${initialUrl}&`;
+    let downloadLink = `${initialUrl}?`;
     for (const param in axiosParams) {
         downloadLink += `${param}=${axiosParams[param]}&`;
     }
@@ -51,7 +53,7 @@ function buildDownloadLink(initialUrl) {
 }
 
 function useFetch() {
-    const initialUrl = "https://randomuser.me/api?exc=login&results=5";
+    const initialUrl = "https://randomuser.me/api";
     const [data, setData] = useState({
         downloadLink: `${initialUrl}&format=csv&noinfo&dl`,
         users: [],
@@ -66,6 +68,8 @@ function useFetch() {
             const { data: dataFromAPI } = await axios.get(initialUrl, {
                 params: axiosParams,
             });
+            if (dataFromAPI.error)
+                throw new Error("Server error occurred, try again");
             const users = parseDataFromAPI(dataFromAPI.results);
             const downloadLink = buildDownloadLink(initialUrl);
             setData({

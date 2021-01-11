@@ -9,13 +9,20 @@ function Users({ users, showSingleUser }) {
     const [exit, setExit] = useState(false);
     function showUser(user) {
         setExit(true);
-        setTimeout(() => showSingleUser(user), 300);
+        setTimeout(() => showSingleUser(user), 200);
     }
     return (
-        <div className={exit ? "Users exit" : "Users enter"}>
-            {users.map((user) => {
+        <div
+            className={exit ? "Users exit" : "Users enter"}
+            data-testid="users"
+        >
+            {users.map((user, i) => {
                 return (
-                    <Paper key={user.id} elevation={5} data-testid="user">
+                    <Paper
+                        key={user.id + String(i)}
+                        elevation={5}
+                        data-testid="user"
+                    >
                         <div className="img">
                             <img src={user.photo} alt={user.name + ".png"} />
                         </div>
