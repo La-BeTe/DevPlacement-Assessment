@@ -114,6 +114,10 @@ function DashboardRight({
                             <MenuItem value="US">USA</MenuItem>
                         </Select>
                     </FormControl>
+
+                    
+                    {/* Use &nbsp; instead of space for label of FormControlLabel below to prevent a
+                    break between show/hide and country */}
                     <FormControlLabel
                         control={
                             <Switch
@@ -124,9 +128,10 @@ function DashboardRight({
                         }
                         id={countrySelectVisible ? "" : "centerOnMobile"}
                         label={
-                            countrySelectVisible
-                                ? "Hide Country"
-                                : "Show Country"
+                            <>
+                                {countrySelectVisible ? "Hide" : "Show"}
+                                &nbsp;Country
+                            </>
                         }
                     />
                 </div>
@@ -154,7 +159,11 @@ function DashboardRight({
                 }
             >
                 <div>
-                    <a href={downloadLink} data-testid="download-results">
+                    <a
+                        href={downloadLink}
+                        download
+                        data-testid="download-results"
+                    >
                         <CloudDownloadIcon />
                         <span className="text">Download results</span>
                     </a>

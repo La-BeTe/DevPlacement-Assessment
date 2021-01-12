@@ -4,6 +4,7 @@ import axios from "axios";
 const constantParams = {
     exc: "login",
     results: 5,
+    seed: "fabc",
 };
 
 let variableParams = {
@@ -46,8 +47,8 @@ function parseDataFromAPI(data) {
     return parsedData;
 }
 
-function buildDownloadLink(initialUrl) {
-    let downloadLink = `${initialUrl}?`;
+function buildDownloadLink(url) {
+    let downloadLink = `${url}?`;
     const combinedParams = { ...variableParams, ...constantParams };
     for (const param in combinedParams) {
         downloadLink += `${param}=${combinedParams[param]}&`;
@@ -59,7 +60,7 @@ function buildDownloadLink(initialUrl) {
 function useFetch() {
     const initialUrl = "https://randomuser.me/api";
     const [data, setData] = useState({
-        downloadLink: `${initialUrl}&format=csv&noinfo&dl`,
+        downloadLink: buildDownloadLink(initialUrl),
         users: [],
     });
     const [loading, setLoading] = useState(false);
@@ -75,8 +76,8 @@ function useFetch() {
             if (dataFromAPI.error)
                 throw new Error("Server error occurred, try again");
             const users = parseDataFromAPI(dataFromAPI.results);
-            const downloadLink = buildDownloadLink(initialUrl);
             variableParams = { ...axiosParams };
+            const downloadLink = buildDownloadLink(initialUrl);
             setData({
                 ...data,
                 users,
