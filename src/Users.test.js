@@ -25,15 +25,14 @@ const users = [
     },
 ];
 
-jest.useFakeTimers();
-
-test("should take users array as props and render a list of users", () => {
+test("should take users array as props and render a list of users", async () => {
     render(<Users users={users} />);
     const renderedUserElements = screen.getAllByTestId("user");
     expect(renderedUserElements).toHaveLength(3);
     renderedUserElements.forEach((elem, i) => {
         expect(screen.getByText(users[i].name)).toBeInTheDocument();
-        expect(screen.getByText(users[i].name)).toHaveClass("name");
+        expect(screen.getByText(users[i].address)).toBeInTheDocument();
+        expect(screen.getByText(users[i].email)).toBeInTheDocument();
     });
 });
 
@@ -47,11 +46,14 @@ test("should have exit class immediately 'see more' button is clicked", () => {
     expect(renderedUsers).toHaveClass("exit");
 });
 
-test("should wait for 300ms before showing user if 'see more' button is clicked", () => {
+test("should wait for 200ms before showing user if 'see more' button is clicked", () => {
+    jest.useFakeTimers();
     const showSingleUser = jest.fn();
     render(<Users users={users} showSingleUser={showSingleUser} />);
     const seeMoreBtn = screen.getAllByTestId("see-more")[0];
     fireEvent.click(seeMoreBtn);
-    expect(setTimeout).toHaveBeenCalledTimes(1);
+    // Switch this to have been called since the Blink
+    // Component(a child of Users Component) also calls setTimeout internally
+    expect(setTimeout).toHaveBeenCalled();
     expect(setTimeout).toHaveBeenLastCalledWith(expect.any(Function), 200);
 });

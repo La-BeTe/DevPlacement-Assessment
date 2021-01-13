@@ -123,4 +123,7 @@
         text-align: center;
         margin: 0;
     }
+    .Users .details > div{
+        flex-direction: column;
+    }
 }

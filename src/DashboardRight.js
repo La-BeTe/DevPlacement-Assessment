@@ -2,7 +2,7 @@ import CloudDownloadIcon from "@material-ui/icons/CloudDownload";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTimes, faRedo } from "@fortawesome/free-solid-svg-icons";
 import {
     Select,
     MenuItem,
@@ -12,12 +12,14 @@ import {
 } from "@material-ui/core";
 import Users from "./Users";
 import User from "./User";
+import Blink from "./Blink";
 import { useState, useEffect } from "react";
 import "./DashboardRight.css";
 
 function DashboardRight({
     fetchHookData: {
         setFilter,
+        retryLastRequest,
         params: { page, gender, nat },
         data: { users, downloadLink },
         loading,
@@ -39,9 +41,14 @@ function DashboardRight({
     }, [loading, error]);
 
     useEffect(() => {
-        // Show all users if a new filter is selected
+        // Show all users if a new filter is selected or input field is changed
         setSingleUser({});
     }, [gender, nat, input]);
+
+    // useEffect(() => {
+    //     // Scroll to top of dashboard right if a new page is requested(for better user experience on smartphones)
+    //     document.querySelector(".DashboardRight").scrollIntoView();
+    // }, [page]);
 
     function handleInputChange(e) {
         setInput(e.target.value);
@@ -67,13 +74,33 @@ function DashboardRight({
                 }
             >
                 {info}{" "}
-                <span className="close-info" onClick={() => setInfo("")}>
-                    X
+                {error && (
+                    <span
+                        title="Retry"
+                        aria-label="retry"
+                        className="info-btn"
+                        onClick={retryLastRequest}
+                    >
+                        <FontAwesomeIcon icon={faRedo} />
+                    </span>
+                )}
+                <span
+                    title="Close"
+                    aria-label="close"
+                    className="info-btn"
+                    onClick={() => setInfo("")}
+                >
+                    <FontAwesomeIcon icon={faTimes} />
                 </span>
             </div>
             <div className="DashboardRight_header">
                 <h2>
-                    {gender.replace(gender[0], gender[0].toUpperCase())} Users
+                    <Blink
+                        text={`${gender.replace(
+                            gender[0],
+                            gender[0].toUpperCase()
+                        )} Users`}
+                    />
                 </h2>
                 <p>Filter by</p>
                 <div className="inputs">
@@ -115,7 +142,6 @@ function DashboardRight({
                         </Select>
                     </FormControl>
 
-                    
                     {/* Use &nbsp; instead of space for label of FormControlLabel below to prevent a
                     break between show/hide and country */}
                     <FormControlLabel

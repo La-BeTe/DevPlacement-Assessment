@@ -14,7 +14,6 @@ const server = setupServer(
         const page = req.url.searchParams.get("page");
         const gender = req.url.searchParams.get("gender");
         const country = req.url.searchParams.get("nat");
-        // The arrangement of this 'if' block is fixed as useFetch doesn't reset params passed to axios
         if (country === "GB") {
             return res(ctx.json(resultsAfterChangingCountry));
         } else if (gender === "female") {
@@ -28,7 +27,9 @@ const server = setupServer(
 );
 
 beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
+afterEach(() => {
+    server.resetHandlers();
+});
 afterAll(() => server.close());
 
 const TestComponent = () => {
@@ -37,6 +38,7 @@ const TestComponent = () => {
         data: { users, downloadLink },
         loading,
         error,
+        retryLastRequest,
     } = useFetch();
     return (
         <>
@@ -48,11 +50,18 @@ const TestComponent = () => {
             <div data-testid="loading">{loading.toString()}</div>
             <div data-testid="error">{error}</div>
             <div data-testid="downloadLink">{downloadLink}</div>
+            <button
+                data-testid="reset"
+                onClick={() => setFilter("uselessFilter", 2)}
+            >
+                Reset useFetch to default filters
+            </button>
             <button onClick={() => setFilter("page", 2)}>Next Page</button>
             <button onClick={() => setFilter("gender", "female")}>
                 Filter By Female Gender
             </button>
             <button onClick={() => setFilter("nat", "GB")}>Filter By UK</button>
+            <button onClick={retryLastRequest}>Retry request</button>
         </>
     );
 };
@@ -68,6 +77,8 @@ test("should return default results if no filter is provided", async () => {
     });
     expect(screen.getByTestId("loading")).toHaveTextContent("false");
     expect(screen.getByTestId("error")).toBeEmptyDOMElement();
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
 });
 
 test("should return new page of results if filter is set to a new page", async () => {
@@ -86,6 +97,8 @@ test("should return new page of results if filter is set to a new page", async (
             resultsAfterChangingPage.results[i].name.last;
         expect(user).toHaveTextContent(name);
     });
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
 });
 
 test("should return users with a different gender if gender filter is changed", async () => {
@@ -104,6 +117,8 @@ test("should return users with a different gender if gender filter is changed", 
             resultsAfterChangingGender.results[i].name.last;
         expect(user).toHaveTextContent(name);
     });
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
 });
 
 test("should return users in a different country if country filter is changed", async () => {
@@ -122,6 +137,8 @@ test("should return users in a different country if country filter is changed", 
             resultsAfterChangingCountry.results[i].name.last;
         expect(user).toHaveTextContent(name);
     });
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
 });
 
 test("should set error string if API return an error", async () => {
@@ -134,4 +151,35 @@ test("should set error string if API return an error", async () => {
     expect(
         await screen.findByText(/server error occurr?ed/i)
     ).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
+});
+
+test("should retry a previous failed request with the exact same params", async () => {
+    render(<TestComponent />);
+    await screen.findAllByTestId("user");
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    server.use(
+        rest.get("https://randomuser.me/api", (req, res, ctx) => {
+            return res(ctx.json({ error: "Uh oh an error occurred" }));
+        })
+    );
+    fireEvent.click(screen.getByText(/next page/i));
+    expect(
+        await screen.findByText(/server error occurr?ed/i)
+    ).toBeInTheDocument();
+    server.resetHandlers();
+    fireEvent.click(screen.getByText(/retry request/i));
+    await screen.findByText(/avery harris/i);
+    expect(screen.getByTestId("loading")).toHaveTextContent("false");
+    const users = await screen.findAllByTestId("user");
+    users.forEach((user, i) => {
+        let name =
+            resultsAfterChangingPage.results[i].name.first +
+            " " +
+            resultsAfterChangingPage.results[i].name.last;
+        expect(user).toHaveTextContent(name);
+    });
+    fireEvent.click(screen.getByTestId("reset"));
+    console.log("DONE");
 });

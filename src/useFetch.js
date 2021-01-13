@@ -13,6 +13,8 @@ let variableParams = {
     page: 1,
 };
 
+let retryLastRequestParams = {};
+
 function parseDataFromAPI(data) {
     const parsedData = data.map(
         (
@@ -70,6 +72,10 @@ function useFetch() {
         setLoading(true);
         error !== "" && setError("");
         try {
+            // Keep a copy of current request params in a variable
+            // So if this request fails, frontend can retry with the exact same params
+            // as last time
+            retryLastRequestParams = { ...axiosParams };
             const { data: dataFromAPI } = await axios.get(initialUrl, {
                 params: { ...axiosParams, ...constantParams },
             });
@@ -94,6 +100,11 @@ function useFetch() {
         getUsers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    function retryLastRequest() {
+        // Use the last request params to make another request
+        getUsers(retryLastRequestParams);
+    }
 
     function setFilter(field, value) {
         // Clone variable params so the header in DashboardRight changes
@@ -123,6 +134,7 @@ function useFetch() {
         setFilter,
         loading,
         error,
+        retryLastRequest,
     };
 }
 

@@ -27,7 +27,7 @@
 *{
   font-family: "Adobe Clean", sans-serif !important;
   transition: all .3s;
-  --webkit-tap-highlight-color: none;
+  -webkit-tap-highlight-color: transparent;
 }
 a, li, input{
   font-family: "Adobe Clean", sans-serif !important;

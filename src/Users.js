@@ -3,6 +3,7 @@ import { useState } from "react";
 import ArrowRightIcon from "@material-ui/icons/ArrowForwardRounded";
 import EmailIcon from "@material-ui/icons/EmailOutlined";
 import PhoneIcon from "@material-ui/icons/PhoneInTalkOutlined";
+import Blink from "./Blink";
 import "./Users.css";
 
 function Users({ users, showSingleUser }) {
@@ -27,16 +28,20 @@ function Users({ users, showSingleUser }) {
                             <img src={user.photo} alt={user.name + ".png"} />
                         </div>
                         <div className="details">
-                            <p className="name">{user.name}</p>
-                            <p className="address">{user.address}</p>
+                            <p className="name">
+                                <Blink text={user.name} />
+                            </p>
+                            <p className="address">
+                                <Blink text={user.address} />
+                            </p>
                             <div>
                                 <p>
                                     <EmailIcon />
-                                    {user.email}
+                                    <Blink text={user.email} />
                                 </p>
                                 <p>
                                     <PhoneIcon />
-                                    {user.phone}
+                                    <Blink text={user.phone} />
                                 </p>
                             </div>
                         </div>
